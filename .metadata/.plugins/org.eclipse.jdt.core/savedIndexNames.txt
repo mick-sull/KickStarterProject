@@ -1,0 +1,2 @@
+INDEX VERSION 1.129+C:\Users\micha\Desktop\KickStarterProject\.metadata\.plugins\org.eclipse.jdt.core
+4078859894.index
