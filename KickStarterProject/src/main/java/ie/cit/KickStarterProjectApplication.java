@@ -10,6 +10,7 @@ public class KickStarterProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KickStarterProjectApplication.class, args);
+		//test colms test
 <<<<<<< master
 		//Test
 		//Test 13.45
