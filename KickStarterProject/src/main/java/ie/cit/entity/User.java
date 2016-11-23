@@ -6,14 +6,24 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User {
+	
+	@Column(name = "id", nullable = false)
     private Long id;
+	
+	@Column(name = "username", nullable = false)
     private String username;
+	
+	@Column(name = "password", nullable = false)
     private String password;
+	
+	@Column(name = "id", nullable = false)
     private String passwordConfirm;
+	
+	@Column(name = "id", nullable = false)
     private Set<Role> roles;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)*/
     public Long getId() {
         return id;
     }
@@ -56,4 +66,5 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+    
 }

@@ -21,7 +21,7 @@ public class ProjectController {
 	@Autowired
 	ProjectRepository projectRepository;
 
-	@RequestMapping("/")
+/*	@RequestMapping("/")
 	public String list(Model model) {
 		
 		Iterable<Project> a= projectRepository.findAll();
@@ -39,6 +39,6 @@ public class ProjectController {
 		model.addAttribute("project", p);
 		
 		return "project/view";
-	}
+	}*/
 	
 }
