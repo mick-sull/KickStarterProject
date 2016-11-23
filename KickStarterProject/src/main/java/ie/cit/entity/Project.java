@@ -6,34 +6,40 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 @Entity
+@Table(name="projects")
 public class Project {
 	
 	@Id
-	@Column(name = "proj_id", nullable = false)
+	@Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(name = "proj_name", nullable = false,length = 50)
+	@Column(name = "name", nullable = false,length = 50)
 	private String name;
 	
-	@Column(name = "proj_desc", nullable = false,length = 200)
+	@Column(name = "description", nullable = false,length = 200)
 	private String description;
 	
 	
 	//private Image picture
 	
-	@Column(name = "goal_amount", precision = 2)
+	@Column(name = "goalAmount", precision = 2)
 	private float goalAmount;
 	
 	
 	//private Datetime timeLimit;
 	
-	@ManyToOne // (cascade = (All))
-	private User owner;
+	//@ManyToOne // (cascade = (All))
+	//private User owner;
+	
+	
+	//List of contributers
+	//List<User> contributers;
 	
 	
 	
