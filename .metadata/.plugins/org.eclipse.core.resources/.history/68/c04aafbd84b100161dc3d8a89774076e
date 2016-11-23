@@ -16,6 +16,5 @@ public class KickStarterProjectApplication {
 		//Michael Made A Changes 10.48
 		System.out.println("Hello");
 		//test kevin branch
-		//new test
 	}
 }
