@@ -13,20 +13,20 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 public class Project {
 	
 	@Id
-	@Column(name = "PROJ_ID", nullable = false)
+	@Column(name = "proj_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(name = "PROJ_NAME", nullable = false,length = 50)
+	@Column(name = "proj_name", nullable = false,length = 50)
 	private String name;
 	
-	@Column(name = "PROJ_DESC", nullable = false,length = 200)
+	@Column(name = "proj_desc", nullable = false,length = 200)
 	private String description;
 	
 	
 	//private Image picture
 	
-	@Column(name = "GOAL_AMOUNT", precision = 2)
+	@Column(name = "goal_amount", precision = 2)
 	private float goalAmount;
 	
 	
@@ -34,6 +34,8 @@ public class Project {
 	
 	@ManyToOne // (cascade = (All))
 	private User owner;
+	
+	
 	
 	public Project(){}	
 	

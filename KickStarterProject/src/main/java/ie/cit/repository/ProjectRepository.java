@@ -17,7 +17,12 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 	
 	
 	// read method (Find all Projects)
+	@Query("SELECT * FROM Project")
+	public List<Project> read(@Param("name") String name);
 	
+	// read method (Find one Projects)
+	@Query("SELECT * FROM Project")
+	public List<Project> read(@Param("name") String name);
 	
 	// update method  (Save a Project Object)
 	
@@ -25,6 +30,11 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 	// delete method  ()
 	
 	
-	//@Query("SELECT p FROM Artist a JOIN a.movements m WHERE m.name = :name")
-	//public List<Project> findByMovementsName(@Param("name") String name);
+	public List<Project> findByName(String fullName); // SELECT * FROM projects WHERE name LIKE '%xxxxx%'
+
+	public List<Project> findById(int id);
+	
+	@Query(value="Select * FROM projects WHERE id = :id", nativeQuery = true)
+	public Project findByIdNative(@Param("id") int id);
+	
 }
