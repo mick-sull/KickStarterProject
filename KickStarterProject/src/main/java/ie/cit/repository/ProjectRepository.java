@@ -6,10 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import ie.cit.entity.Project;
 
-public interface ProjectRepository extends CrudRepository{  //JpaRepository<Project, Long>{
+@Repository
+public interface ProjectRepository extends CrudRepository<Project, Long> {  //JpaRepository<Project, Long>{
 	
 	// create method (save Project Object)
 	
