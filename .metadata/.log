@@ -3406,3 +3406,120 @@ Caused by: java.io.IOException: Could not find org.springframework.security.core
 
 !ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:33:48.351
 !MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:39:20.718
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:39:20.729
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:39:20.740
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:39:20.751
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:39:20.760
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:39:20.774
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 22:47:47.643
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:57:24.332
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:57:24.348
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:57:24.360
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:57:24.375
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:57:24.377
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:57:24.388
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:58:31.010
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:58:31.036
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:58:31.051
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:58:31.065
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:58:31.075
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 22:58:31.081
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 23:06:46.320
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:14.121
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:14.133
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:14.146
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:14.154
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:14.160
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:14.166
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 23:07:14.676
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:15.691
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:15.701
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:15.709
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:15.710
+!MESSAGE Null entry in the set of referencable nodes. Name: 'roleRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:15.718
+!MESSAGE Null entry in the set of referencable nodes. Name: 'userRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.springframework.ide.eclipse.beans.ui.editor 2 0 2016-11-23 23:07:15.719
+!MESSAGE Null entry in the set of referencable nodes. Name: 'projectRepository'. Locator class: org.springframework.ide.eclipse.data.beans.ui.editor.RepositoriesReferenceableElementLocator
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 23:08:58.363
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 23:09:19.478
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 23:09:34.377
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 23:11:16.986
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 23:19:19.947
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-11-23 23:20:39.912
+!MESSAGE Unexpected URLConnection defaultUseCaches enabled
