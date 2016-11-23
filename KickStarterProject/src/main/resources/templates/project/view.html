@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Project</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body> 
+<h1 th:text="#{project.view.title}">Project Title</h1>
+
+<p>Name: <span th:text="${project.name}">Project Name</span></p>
+<p>Gender: <span th:text="${project.goalAmount}">Goal Amount</span></p>
+<!-- 
+<div  th:unless="${#lists.isEmpty(project.users)}">
+	<p>Contributers:</p>
+	<table>
+		<tr th:each="movement: ${artist.movements}">
+			<td th:text="${movement.name}">Name</td>
+		</tr>
+	</table>
+</div>
+ -->
+</body>
+</html>

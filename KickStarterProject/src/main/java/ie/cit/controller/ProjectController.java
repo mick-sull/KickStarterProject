@@ -34,9 +34,9 @@ public class ProjectController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String view(Model model, @PathVariable("id") int id) {
 		
-		Project a= projectRepository.findByIdNative(id);
+		Project p = projectRepository.findById(id);
 		
-		model.addAttribute("project", a);
+		model.addAttribute("project", p);
 		
 		return "project/view";
 	}
