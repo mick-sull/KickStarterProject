@@ -13,7 +13,5 @@ public class KickStarterProjectApplication {
 		System.out.println("Hello");
 		//Michael Made A Changes 10.48
 		//test
-		//Test 13.45
-		//Test
 	}
 }
