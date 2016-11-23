@@ -27,7 +27,7 @@ public class Project {
 		this.name = name;
 		this.description = description;
 		this.goalAmount = goalAmount;
-		// chage 17.44
+		// chage 18.18
 	}
 	
 	
