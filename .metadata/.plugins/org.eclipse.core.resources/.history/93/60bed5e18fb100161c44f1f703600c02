@@ -1,0 +1,5 @@
+package ie.cit.repository;
+
+public interface UserRepository extends JpaRepository<User, int> {
+    User findByUsername(String username);
+}
