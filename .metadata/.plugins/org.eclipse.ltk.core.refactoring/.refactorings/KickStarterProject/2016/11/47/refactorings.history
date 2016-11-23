@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename compilation unit &apos;ie.cit.entity.Roles.java&apos; to &apos;Role.java&apos;&#x0D;&#x0A;- Original project: &apos;KickStarterProject&apos;&#x0D;&#x0A;- Original element: &apos;ie.cit.entity.Roles.java&apos;&#x0D;&#x0A;- Renamed element: &apos;ie.cit.entity.Role.java&apos;" description="Rename compilation unit &apos;Roles.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java&lt;ie.cit.entity{Roles.java" name="Role.java" references="false" stamp="1479912012024" version="1.0"/>
-</session>
