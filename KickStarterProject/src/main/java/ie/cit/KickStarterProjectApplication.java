@@ -11,6 +11,5 @@ public class KickStarterProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KickStarterProjectApplication.class, args);
 		
-		System.out.println("Hello");
 	}
 }
