@@ -1,0 +1,5 @@
+package ie.cit.controller;
+
+public class UserController {
+
+}
