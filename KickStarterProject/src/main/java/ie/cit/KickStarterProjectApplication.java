@@ -10,7 +10,8 @@ public class KickStarterProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KickStarterProjectApplication.class, args);
-		//test
+		System.out.println("Hello");
 		//Michael Made A Changes 10.48
+		//test
 	}
 }
