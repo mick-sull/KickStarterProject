@@ -1,0 +1,4 @@
+package ie.cit.repository;
+
+public interface RoleRepository extends JpaRepository<Role, Long>{
+}
