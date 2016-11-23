@@ -1,0 +1,8 @@
+package ie.cit.entity;
+
+
+@Entity
+@Table(name="user")
+public class User {
+
+}
