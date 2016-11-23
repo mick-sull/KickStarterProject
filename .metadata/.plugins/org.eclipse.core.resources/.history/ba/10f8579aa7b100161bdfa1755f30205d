@@ -1,0 +1,5 @@
+package ie.cit.entity;
+
+public class Project {
+
+}
