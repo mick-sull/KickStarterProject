@@ -1,6 +1,8 @@
 package ie.cit.entity;
 
 import javax.persistence.*;
+
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +23,8 @@ public class User {
 	
 	@Column(name = "id", nullable = false)
     private Set<Role> roles;
+	
+	private List<Pledge> pledges;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -65,6 +69,15 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    public List<Pledge> getPledges() {
+        return pledges;
+    }
+    
+    public void setPledges(List<Pledge> pledges){
+    	this.pledges = pledges;
     }
     
 }
