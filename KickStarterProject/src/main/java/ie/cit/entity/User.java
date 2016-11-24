@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 	
 	@Column(name = "id", nullable = false)
@@ -22,8 +22,8 @@ public class User {
 	@Column(name = "id", nullable = false)
     private Set<Role> roles;
 
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)*/
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
