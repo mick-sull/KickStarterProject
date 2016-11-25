@@ -1,5 +1,8 @@
 package ie.cit.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,8 +28,10 @@ public class ProjectController {
 	public String list(Model model) {
 		
 		Iterable<Project> a= projectRepository.findAll();
-		
-		model.addAttribute("project", a);
+		List<Project> projects = new ArrayList<Project>();
+		a.forEach(projects::add);
+		model.addAttribute("project", projects);
+		System.out.println("" + projects.get(0));
 		
 		return "project/list";
 	}
@@ -34,9 +39,9 @@ public class ProjectController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String view(Model model, @PathVariable("id") int id) {
 		
-		Project p = projectRepository.findById(id);
+		Project proj = projectRepository.findById(id);
 		
-		model.addAttribute("project", p);
+		model.addAttribute("project", proj);
 		
 		return "project/view";
 	}

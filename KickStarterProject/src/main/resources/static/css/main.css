@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 body {
-	
+	background: #d7dfe0;
 }
 
 #header {
@@ -24,6 +24,27 @@ body {
     -1px 1px 0 #000,
      1px 1px 0 #000;
 }
+
+#main {
+	background: #d7dfe0;
+}
+
+.innerMain {
+	width: 1024px;
+	margin: 0 auto;
+	background: white;
+	min-height: 600px;
+}
+
+.innerMain table {
+	padding: 20px;
+}
+
+.innerMain h1 {
+	padding: 20px;
+}
+
+
 
 #footer {
 	background: #b1d7dd;
