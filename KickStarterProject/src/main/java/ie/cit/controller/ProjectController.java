@@ -37,7 +37,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String view(Model model, @PathVariable("id") int id) {
+	public String view(Model model, @PathVariable("id") long id) {
 		
 		Project proj = projectRepository.findById(id);
 		

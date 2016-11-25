@@ -2,13 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Project</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body> 
-<h1 th:text="#{project.view.title}">Project Title</h1>
-
-<p>Name: <span th:text="${project.name}">Project Name</span></p>
-<p>Gender: <span th:text="${project.goalAmount}">Goal Amount</span></p>
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			<h1 th:text="${project.name}">Project Title</h1>
+			
+			<p>Description: <span th:text="${project.description}">Project Name</span></p>
+			<p>Goal: <span th:text="${project.goalAmount}">Goal Amount</span></p>
+		</div>
+	</div>
 <!-- 
 <div  th:unless="${#lists.isEmpty(project.users)}">
 	<p>Contributers:</p>

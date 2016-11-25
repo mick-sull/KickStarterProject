@@ -21,7 +21,7 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 	//public List<Project> readAll();
 	
 	// read method (Find one Projects)
-	public Project findById(int id);
+	public Project findById(long id);
 	
 	//@Query(value="Select * FROM projects WHERE id = :id", nativeQuery = true)
 	//public Project findByIdNative(@Param("id") int id);
