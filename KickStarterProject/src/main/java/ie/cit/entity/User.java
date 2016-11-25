@@ -9,25 +9,25 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
 	
-	@Column(name = "id", nullable = false)
-    private Long id;
-	
-	@Column(name = "username", nullable = false)
-    private String username;
-	
-	@Column(name = "password", nullable = false)
-    private String password;
-	
-	@Column(name = "id", nullable = false)
-    private String passwordConfirm;
-	
-	@Column(name = "id", nullable = false)
-    private Set<Role> roles;
-	
-	private List<Pledge> pledges;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+	
+    private String username;
+	
+    private String password;
+	
+    private String passwordConfirm;
+	
+    @ManyToMany
+    @JoinTable(name = "user_role", 
+    	joinColumns = @JoinColumn(name = "user_id"), 
+    	inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Pledge> pledges;
+
     public Long getId() {
         return id;
     }
@@ -61,8 +61,6 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<Role> getRoles() {
         return roles;
     }
@@ -71,7 +69,7 @@ public class User {
         this.roles = roles;
     }
     
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    
     public List<Pledge> getPledges() {
         return pledges;
     }

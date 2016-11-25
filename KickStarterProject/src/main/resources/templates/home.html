@@ -2,9 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home Title</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+    
 </head>
-<body> 
-<h1 th:text="#{home.title}">H1 Title - SHould show all projects in here :::: </h1>
+<body>
+
+	<div th:include="fragments/header :: header">
+	</div>
 </body>
 </html>

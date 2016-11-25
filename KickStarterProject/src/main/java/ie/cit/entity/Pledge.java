@@ -14,13 +14,13 @@ import javax.persistence.Table;
 public class Pledge {
 
 	@Id
-	@Column(name = "id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(name = "amount", nullable = false)
 	private double amount;
 	
+	@ManyToOne
+    @JoinColumn(name = "user_id" )
 	private User user;
 
 	public long getId() {
@@ -39,8 +39,6 @@ public class Pledge {
 		this.amount = amount;
 	}
 	
-	@ManyToOne
-    @JoinColumn(name = "id")
     public User getUser() {
         return user;
     }
