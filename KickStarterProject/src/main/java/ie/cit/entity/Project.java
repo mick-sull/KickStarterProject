@@ -1,11 +1,16 @@
 package ie.cit.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -33,18 +38,21 @@ public class Project {
 	
 	
 	//private Datetime timeLimit;
-	
-	//@ManyToOne // (cascade = (All))
-	//private User owner;
+	@ManyToOne
+	@JoinColumn(name = "owner_id" )
+	private User owner;
 	
 	
 	//List of contributers
 	//List<User> contributers;
 	
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+	List<Pledge> pledges; 
+	
 	
 	
 	public Project(){}	
-	
+
 	public Project(long id, String name, String description, float goalAmount) {
 		super();
 		this.id = id;
@@ -104,8 +112,33 @@ public class Project {
 		this.goalAmount = goalAmount;
 	}
 	
-	
+	public User getOwner() {
+		return owner;
+	}
 
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public List<Pledge> getPledges() {
+		return pledges;
+	}
+
+	public void setPledges(List<Pledge> pledges) {
+		this.pledges = pledges;
+	}
+
+	public double getPledged(){
+		double pledged = 0;
+		for(Pledge pledge: pledges){
+			pledged+=pledge.getAmount();
+		}
+		return pledged;
+	}
 	
+	public double getBalance(){
+		double balance = goalAmount - getBalance();
+		return balance;
+	}
 	
 }

@@ -10,11 +10,7 @@ public class KickStarterProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KickStarterProjectApplication.class, args);
-		//test colms test
-		//Test
-		//Test 13.45
-		//test
-		//Michael Made A Changes 10.48
+		
 		System.out.println("Hello");
 		//test kevin branch
 		//test colms test

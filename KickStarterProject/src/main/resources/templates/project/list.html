@@ -1,18 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Artists</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Projects</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body> 
-<h1 th:text="#{project.list.title}">Default Title</h1>
-
-<table>
-	<tr th:each="project: ${projects}">
-		<td th:text="${project.fullName}">Name</td>
-		<td>[<a th:href="@{/project/__${project.id}__}">view</a>]</td>
-	</tr>
-</table>
-
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			<h1>Projects</h1>
+			
+			<table>
+				<tr th:each="proj: ${project}">
+					<td th:text="${proj.id}">Id</td>
+					<td th:text="${proj.name}">Name</td>
+					<td>[<a th:href="@{/project/__${proj.id}__}">view</a>]</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

@@ -2,22 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Project</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body> 
-<h1 th:text="#{project.view.title}">Project Title</h1>
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			<h1 th:text="${project.name}">Project Title</h1>
+			
+			<table>
+				<tr>
+					<td>Description</td>
+					<td><span th:text="${project.description}">Project Name</span></td>
+				</tr>
+				<tr>
+					<td>Goal</td>
+					<td> <span th:text="${project.goalAmount}">Goal Amount</span></td>
+				</tr>
+				<tr>
+					<td>Pledged</td>
+					<td> <span th:text="${project.getPledged()}">Pledged Amount</span></td>
+				</tr>
+				<tr>
+					<td>Owner</td> 
+					<td><span th:text="${project.owner.username}">Owner Name</span></td>
+				</tr>
+			</table>
+			<br />
+			<h3>Contributers</h3>
+			<table>
+				<tr>
+					<th>User</th>
+					<th>Amount</th>
+				</tr>
+				<tr th:each="pledge: ${project.pledges}">
+					<td th:text="${pledge.user.username}">Username</td>
+					<td th:text="${pledge.amount}">Amount</td>
+				</tr>
+			</table>
+			
+			
+			
+		</div>
+	</div>
 
-<p>Name: <span th:text="${project.name}">Project Name</span></p>
-<p>Gender: <span th:text="${project.goalAmount}">Goal Amount</span></p>
-<!-- 
-<div  th:unless="${#lists.isEmpty(project.users)}">
-	<p>Contributers:</p>
-	<table>
-		<tr th:each="movement: ${artist.movements}">
-			<td th:text="${movement.name}">Name</td>
-		</tr>
-	</table>
-</div>
- -->
 </body>
 </html>
