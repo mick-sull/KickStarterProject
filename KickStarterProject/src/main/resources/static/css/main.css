@@ -37,14 +37,20 @@ body {
 }
 
 .innerMain table {
-	padding: 20px;
+	padding: 0px 20px;
 }
 
-.innerMain h1 {
-	padding: 20px;
+.innerMain h1, .innerMain h3 {
+	padding: 10px 20px 0px 20px;
 }
 
+.innerMain p {
+	padding: 0px 20px;
+}
 
+.innerMain td, .innerMain th{
+	padding-right: 20px;
+}
 
 #footer {
 	background: #b1d7dd;

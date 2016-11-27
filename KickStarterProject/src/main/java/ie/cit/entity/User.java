@@ -27,8 +27,11 @@ public class User {
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Pledge> pledges;
+	
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+	private List<Project> projects;
 
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 
@@ -77,5 +80,13 @@ public class User {
     public void setPledges(List<Pledge> pledges){
     	this.pledges = pledges;
     }
+    
+    public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
     
 }

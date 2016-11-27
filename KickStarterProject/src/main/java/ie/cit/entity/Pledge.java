@@ -22,6 +22,10 @@ public class Pledge {
 	@ManyToOne
     @JoinColumn(name = "user_id" )
 	private User user;
+	
+	@ManyToOne
+    @JoinColumn(name = "project_id" )
+	private Project project;
 
 	public long getId() {
 		return id;
@@ -46,5 +50,15 @@ public class Pledge {
 	public void setUser(User user){
 		this.user = user;
 	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+	
+	
 	
 }
