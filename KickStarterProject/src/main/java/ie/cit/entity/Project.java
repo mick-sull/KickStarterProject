@@ -129,16 +129,16 @@ public class Project {
 	}
 
 	public double getPledged(){
-		double balance = 0;
+		double pledged = 0;
 		for(Pledge pledge: pledges){
-			balance+=pledge.getAmount();
+			pledged+=pledge.getAmount();
 		}
-		return balance;
+		return pledged;
 	}
 	
 	public double getBalance(){
-		double pledged = goalAmount - getBalance();
-		return pledged;
+		double balance = goalAmount - getBalance();
+		return balance;
 	}
 	
 }

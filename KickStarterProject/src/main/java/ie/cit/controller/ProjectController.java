@@ -3,12 +3,19 @@ package ie.cit.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import ie.cit.entity.Project;
 import ie.cit.repository.ProjectRepository;
@@ -19,10 +26,15 @@ import ie.cit.repository.ProjectRepository;
  */
 @Controller
 @RequestMapping("/project")
-public class ProjectController {
+public class ProjectController extends WebMvcConfigurerAdapter{
 
 	@Autowired
 	ProjectRepository projectRepository;
+	
+	@Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/projCreated").setViewName("projCreated");
+    }
 
 	@RequestMapping("/")
 	public String list(Model model) {
@@ -45,5 +57,20 @@ public class ProjectController {
 		
 		return "project/view";
 	}
+	
+	@GetMapping("/newProj")
+    public String showProjForm(Project project) {
+        return "project/projForm";
+    }
+
+    @PostMapping("/newProj")
+    public String checkProjectInfo(@Valid Project project, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "project/projForm";
+        }
+
+        return "redirect:projCreated";
+    }
 	
 }
