@@ -1,6 +1,8 @@
 package ie.cit.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import java.util.List;
 import java.util.Set;
@@ -13,11 +15,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 	
+    @NotNull
+    @Size(min=2, max=30, message = "Username size should be in the range [2...30]")
     private String username;
-	
+    
+    @NotNull
+    @Size(min=1, max=50)
     private String password;
 	
-    private String passwordConfirm;
+ //   private String passwordConfirm;
 	
     @ManyToMany
     @JoinTable(name = "user_role", 
@@ -30,6 +36,12 @@ public class User {
 	
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
 	private List<Project> projects;
+
+/*	public User(User user) {
+		this.id = user.id;
+        this.username = user.username;  
+        this.password = user.password;  
+	}*/
 
 	public Long getId() {
         return id;
@@ -55,7 +67,7 @@ public class User {
         this.password = password;
     }
 
-    @Transient
+/*    @Transient
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
@@ -63,7 +75,7 @@ public class User {
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
     }
-
+*/
     public Set<Role> getRoles() {
         return roles;
     }
@@ -87,6 +99,11 @@ public class User {
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
+	}
+
+	public String getUserName() {
+		// TODO Auto-generated method stub
+		return username;
 	}
     
 }

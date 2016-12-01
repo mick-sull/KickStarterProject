@@ -1,4 +1,4 @@
-INSERT INTO users VALUES (NULL,'password','password', 'smithy12'),(NULL,'password','password', 'murph12'),(NULL,'password','password', 'jonesy12'),(NULL,'password','password', 'damo12');
+INSERT INTO users VALUES (NULL,'password', 'smithy12'),(NULL,'pass', 'user'),(NULL,'password', 'murph12'),(NULL,'password', 'jonesy12'),(NULL,'password', 'damo12');
 
 INSERT INTO projects VALUES (NULL,'Description 1', 1200.00, 'Project 1', 1),(NULL,'Description 2', 1249.00, 'Project 2', 2),(NULL,'Description 3', 3000.00, 'Project 3', 3),(NULL,'Description 4', 6000.00, 'Project 4', 4);
 

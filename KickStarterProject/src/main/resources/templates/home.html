@@ -10,6 +10,13 @@
 	<div th:include="fragments/header :: header"></div>
 	<div id="main">
 		<div class="innerMain">
+			<table>
+				<tr th:each="pled: ${pledge}">
+<!-- 					<td th:text="${pled.id}">Id</td>
+					<td th:text="${pled.getUser.getUsername()}">User</td>
+					<td>[<a th:href="@{/project/__${pled.getProject.getName()}__}">view</a>]</td> -->
+				</tr>
+			</table>
 		</div>
 	</div>
 </body>

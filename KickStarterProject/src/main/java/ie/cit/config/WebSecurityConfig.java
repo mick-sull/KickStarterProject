@@ -1,3 +1,4 @@
+package ie.cit.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,35 +9,53 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import ie.cit.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UserDetailsService userDetailsService;
+	@Autowired
+	private CustomUserDetailsService customUserDetailsService;
 
-    @Bean
+/*    @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }
+    }*/
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                    .antMatchers("/resources/**", "/registration").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .and()
-                .logout()
-                    .permitAll();
+    	http.authorizeRequests()
+		.antMatchers("/admin/**")
+		.access("hasRole('ADMIN')")
+		.and()
+		.formLogin()
+			.loginPage("/login")
+			.loginProcessingUrl("/login")
+			.failureUrl("/login?error")
+			.usernameParameter("username")
+			.passwordParameter("password")
+			
+	.and()
+		.logout()
+			.logoutUrl("/j_spring_security_logout")
+			.logoutSuccessUrl("/login?logout")
+	.and()
+		.exceptionHandling()
+		.accessDeniedPage("/403");
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+    	//auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+    	auth.userDetailsService(customUserDetailsService);
+    	
+    
     }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder;
+	}
 }

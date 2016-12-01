@@ -13,6 +13,8 @@ import ie.cit.entity.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {  //JpaRepository<User, Long> {
     User findByUsername(String username);
+    public User findByUsernameAndPassword(String username, String password);
+    public User findById(long id);
     
     // create method (save Project Object)
 	
