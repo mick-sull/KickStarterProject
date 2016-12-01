@@ -73,6 +73,7 @@ body {
 
 #main-nav li {
     float: left;
+    li:last-child { float:right; }
 }
 
 #main-nav li a {
@@ -81,6 +82,7 @@ body {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    
 }
 
 #main-nav li a:hover {
