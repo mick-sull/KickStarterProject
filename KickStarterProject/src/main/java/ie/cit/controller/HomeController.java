@@ -1,11 +1,20 @@
 package ie.cit.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import ie.cit.entity.Pledge;
+import ie.cit.entity.Project;
+import ie.cit.repository.PledgeRepository;
 
 
 /**
@@ -16,12 +25,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * you need to login ??
  */
 @Controller
-public class HomeController {
+@RequestMapping("/")
+public class HomeController extends WebMvcConfigurerAdapter {
+	
+	
+	
+	@Autowired
+	PledgeRepository pledgedRepository;
+	
 
-	@RequestMapping(value = "/"/*, method = RequestMethod.GET*/)
-	public String home(Locale locale, Model model) {
-		return "home";
-		//test
+	@Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("home");
+    }
+
+/*	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {*/
+	@RequestMapping("/")
+	public String list(Model model) {	
+		Iterable<Pledge> a= pledgedRepository.findFirst5ByOrderByIdDesc();
+		List<Pledge> pledges = new ArrayList<Pledge>();
+		a.forEach(pledges::add);
+		model.addAttribute("pledge", pledges);
+		for(int i = 0; i < pledges.size(); i++ ){
+			System.out.println("Pledges ID " + pledges.get(i).getId() + " Username " + pledges.get(i).getUser().getUsername() + " Username " + pledges.get(i).getProject().getName() );
+		}
+		
+		return "/list";
 	}
 	
 }
