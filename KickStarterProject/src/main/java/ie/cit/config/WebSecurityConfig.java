@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 import ie.cit.service.CustomUserDetailsService;
 
@@ -36,6 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.failureUrl("/login?error")
 			.usernameParameter("username")
 			.passwordParameter("password")
+			.defaultSuccessUrl("/user/profile")
+			
 			
 	.and()
 		.logout()
@@ -53,6 +56,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     	
     
     }
+    
+
+    
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();

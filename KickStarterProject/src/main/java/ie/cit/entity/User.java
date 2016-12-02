@@ -43,6 +43,7 @@ public class User {
         this.password = user.password;  
 	}*/
 
+
 	public Long getId() {
         return id;
     }
@@ -101,9 +102,9 @@ public class User {
 		this.projects = projects;
 	}
 
-	public String getUserName() {
+/*	public String getUserName() {
 		// TODO Auto-generated method stub
 		return username;
-	}
+	}*/
     
 }

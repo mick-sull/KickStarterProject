@@ -17,7 +17,7 @@ public class CustomUserDetails extends User implements UserDetails {
 
 	public CustomUserDetails(User user,List<String> userRoles){
 		super();
-		System.out.println("CustomUserDetails user: " + user.getUserName());
+		System.out.println("CustomUserDetails user: " + user.getUsername());
 		this.userRoles=userRoles;
 	}
 	
@@ -51,6 +51,6 @@ public class CustomUserDetails extends User implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return super.getUserName();
+		return super.getUsername();
 	}
 }
