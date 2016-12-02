@@ -2,11 +2,14 @@ package ie.cit.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ie.cit.config.SecurityUser;
 import ie.cit.entity.User;
@@ -17,6 +20,7 @@ import ie.cit.repository.RoleRepository;
 public class CustomUserDetailsService implements UserDetailsService {
 
 	private UserService userService;
+	private HttpServletRequest request;
 
 	@Autowired
 	public CustomUserDetailsService(UserService userService) {
@@ -34,6 +38,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
 		else{
 			System.out.println("CustomUserDetailsService  found user: " + username);
+		   	//request.getSession().setAttribute("username", username);
 		}
 		SecurityUser sUser= new SecurityUser(user);
 		return sUser;
