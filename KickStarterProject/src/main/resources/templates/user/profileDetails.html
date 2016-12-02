@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Projects</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body> 
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			<h1>User profile</h1>
+			<p th:text="${username}">username</p>
+		
+		<h2>My Projects22</h2>			
+			<table>
+				<tr th:each="prod: ${project}">
+ 					<td th:text="${prod.getName()}">name</td>
+					<td th:text="${prod.getDescription()}">Description</td>
+					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(prod.getPledged())} ">Pledged</td>
+					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(prod. getGoalAmount())} ">Goal</td>
+					<!-- <span th:inline="text">€<td th:text="${pled.getAmount()}">Amount</td></span> -->					
+					<!-- <td><a th:text="${pled.getProject().getName()}" th:href="@{/project/__${pled.getProject().getId()}__}"></a></td>-->
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
