@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Register</title>
+	<link href="../css/main.css" th:href="@{../css/main.css}" rel="stylesheet" type="text/css" media="screen" />
+  </head>
+  <body>
+
+	<div class="login-page">
+		<div class="form">
+			<h1>Sign Up</h1>
+				<div th:if="${param.error}">
+				Incomplete information
+			</div>
+			<div th:if="${param.logout}">
+				You have been logged out.
+			</div>
+			<form th:action="@{/user/register}"  th:object="${user}" method="POST">
+			  <input type="text"  placeholder="username" id="username" name="username" autofocus="autofocus" /> <br />
+			  <input type="password"  placeholder="password" id="password" name="password" /> <br />
+			   <!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->
+			  <input type="submit" value="Sign up"/>
+			  <p class="message">Registered? <a href="/user/login">Sign in!</a></p>
+			  						<input
+				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			</form>
+  </div>
+</div>
+  </body>
+</html>

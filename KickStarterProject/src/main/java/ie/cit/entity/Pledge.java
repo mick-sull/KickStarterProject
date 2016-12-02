@@ -1,5 +1,8 @@
 package ie.cit.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="pledges")
@@ -26,6 +31,10 @@ public class Pledge {
 	@ManyToOne
     @JoinColumn(name = "project_id" )
 	private Project project;
+	
+	@Column(updatable=false, insertable=false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar pledgeDate;
 
 	public long getId() {
 		return id;
@@ -58,7 +67,20 @@ public class Pledge {
 	public void setProject(Project project) {
 		this.project = project;
 	}
+
+	public Calendar getPledgeDate() {
+		return pledgeDate;
+	}
+
+	public void setPledgeDate(Calendar pledgeDate) {
+		this.pledgeDate = pledgeDate;
+	}
 	
-	
+	public String getPledgeDateString(){
+		String date = "";
+		SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy");
+		date = formatter.format(this.pledgeDate.getTime());
+		return date;
+	}
 	
 }
