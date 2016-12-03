@@ -10,18 +10,69 @@
 		<div class="innerMain">
 			<h1>User profile</h1>
 			<p th:text="${username}">username</p>
-		
-		<h2>My Projects22</h2>			
+
+
+			<h3>My Projects</h3>
+			
 			<table>
-				<tr th:each="prod: ${project}">
- 					<td th:text="${prod.getName()}">name</td>
-					<td th:text="${prod.getDescription()}">Description</td>
-					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(prod.getPledged())} ">Pledged</td>
-					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(prod. getGoalAmount())} ">Goal</td>
-					<!-- <span th:inline="text">€<td th:text="${pled.getAmount()}">Amount</td></span> -->					
-					<!-- <td><a th:text="${pled.getProject().getName()}" th:href="@{/project/__${pled.getProject().getId()}__}"></a></td>-->
+				<tr th:each="proj: ${project}">
+					<td><div class="proj_list">
+						<img th:attr="src=@{${proj.imagePath}}" class="proj_img_list" />
+						<h3 th:text="${proj.name}">Name</h3>
+						<p th:text="${proj.description}">Description</p>
+						
+						[<a th:href="@{/project/__${proj.id}__}">view</a>]
+						
+					</div></td>
+					<!-- <td th:text="${proj.id}">Id</td>
+					<td th:text="${proj.name}">Name</td>
+					<td>[<a th:href="@{/project/__${proj.id}__}">view</a>]</td> -->
 				</tr>
 			</table>
+
+
+			<!--
+			<h3>My Projects</h3>			
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Total Pledges</th>
+					<th>Goal</th>
+				</tr>
+				<tr th:each="prod: ${project}">
+ 					<td><div class="pledge_list">
+						<td th:text="${prod.getName()}">name</td>
+						<td th:text="${prod.getDescription()}">Description</td>
+						<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(prod.getPledged())} ">Pledged</td>
+						<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(prod. getGoalAmount())} ">Goal</td>
+						
+					</div></td>
+				</tr>
+			</table>
+			-->
+
+			<h3>My Pledges</h3>			
+
+			<table>
+				<tr>
+					<th>Project Name</th>
+					<th>Project Description</th>
+					<th>My Contribution</th>
+					<th>Finish Date??</th>
+					<!--<th>Cancel Contribution</th>-->
+				</tr>
+				<tr th:each="pledge: ${pledge}">
+					<!--<td><div class="pledge_list">-->
+					<td th:text="${pledge.project.name}">Project Name</td>
+					<td th:text="${pledge.project.description}">Project description</td>
+					<td th:text="${pledge.amount}">Amount</td>
+					<td th:text="${pledge.getPledgeDateString()}">Date</td>
+					
+					<!--</div></td>-->
+				</tr>
+			</table>
+
 		</div>
 	</div>
 </body>

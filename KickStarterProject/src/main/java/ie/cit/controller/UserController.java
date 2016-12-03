@@ -26,8 +26,10 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import ie.cit.config.SecurityUser;
+import ie.cit.entity.Pledge;
 import ie.cit.entity.Project;
 import ie.cit.entity.User;
+import ie.cit.repository.PledgeRepository;
 import ie.cit.repository.ProjectRepository;
 import ie.cit.repository.UserRepository;
 import ie.cit.service.CustomUserDetails;
@@ -41,13 +43,15 @@ public class UserController extends WebMvcConfigurerAdapter{
 
 	@Autowired
 	UserRepository userRepository;
-	
 
 	@Autowired
 	UserService userService;
 	
 	@Autowired
 	ProjectRepository projectRepository;
+	
+	@Autowired
+	PledgeRepository pledgeRepository;
 	
 	private final String LOGIN_PAGE = "login";
 	
@@ -118,6 +122,21 @@ public class UserController extends WebMvcConfigurerAdapter{
 		a.forEach(projects::add);
 		model.addAttribute("project", projects);
 		System.out.println("" + projects.get(0));
+		
+		
+		/*
+		 * Colm edit.
+		 * 
+		 * I was hoping make a custom query so I can join
+		 * pledge and project tables and then display them in the 
+		 * user  'My Pledges' section
+		 */
+		// Get the pledges this user has contributed to????
+		Iterable<Pledge> pl = user.getPledges();
+		List<Pledge> pledges = new ArrayList<Pledge>();
+		pl.forEach(pledges::add);
+		model.addAttribute("pledge", pledges);
+		
 		
 		return "user/profileDetails";
 	}
