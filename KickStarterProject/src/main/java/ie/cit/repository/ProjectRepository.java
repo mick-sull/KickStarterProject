@@ -34,7 +34,7 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 	
 	// delete method  ()
 	
-	
+	public Project findById(Long id);
 	public List<Project> findByName(String fullName); // SELECT * FROM projects WHERE name LIKE '%xxxxx%'
 
 

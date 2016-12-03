@@ -15,5 +15,4 @@ public interface PledgeRepository extends CrudRepository<Pledge, Long> {
 	public List<Pledge> findAll();
 	
 	
-	
 }
