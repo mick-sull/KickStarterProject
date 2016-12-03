@@ -83,4 +83,11 @@ public class Pledge {
 		return date;
 	}
 	
+	public String getDateString(Calendar calander){
+		String date = "";
+		SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy");
+		date = formatter.format(calander.getTime());
+		return date;
+	}
+	
 }

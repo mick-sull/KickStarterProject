@@ -14,6 +14,6 @@ public interface PledgeRepository extends CrudRepository<Pledge, Long> {
 	public List<Pledge> findFirst5ByOrderByIdDesc();
 	public List<Pledge> findAll();
 	
-
+	
 	
 }

@@ -1,4 +1,4 @@
-INSERT INTO users VALUES (NULL,'password', 'smithy12'),(NULL,'pass', 'user'),(NULL,'password', 'murph12'),(NULL,'password', 'jonesy12'),(NULL,'password', 'damo12');
+INSERT INTO users VALUES (NULL, 500.0, 'password', 'smithy12'),(NULL, 500.0, 'pass', 'user'),(NULL, 100.0, 'password', 'murph12'),(NULL, 1000.0, 'password', 'jonesy12'),(NULL, 400.0, 'password', 'damo12');
 
 INSERT INTO projects VALUES (NULL, timestamp'2016-09-09 09:30:25 GMT', '2016-12-15','Description 1', 1200.00, '../images/money_tree.jpg', 'Money Tree', 1);
 INSERT INTO projects VALUES (NULL, timestamp'2016-10-10 09:30:25 GMT', '2016-12-25','Description 2', 1249.00, '../images/cats_eyes.png', 'Cat Contact Lenses', 2);
