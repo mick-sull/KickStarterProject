@@ -22,6 +22,11 @@ public class User {
     @NotNull
     @Size(min=1, max=50)
     private String password;
+    
+    // Set up when registering?? 
+    // when making a pledge add up all the existing user pledge
+    // amounts
+    private float creditLimit; 
 	
  //   private String passwordConfirm;
 	
@@ -67,8 +72,17 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
 
-/*    @Transient
+    public float getCreditLimit() {
+		return creditLimit;
+	}
+
+	public void setCreditLimit(float creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+
+	/*    @Transient
     public String getPasswordConfirm() {
         return passwordConfirm;
     }
