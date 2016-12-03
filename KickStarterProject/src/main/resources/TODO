@@ -1,0 +1,37 @@
+Frameworks Project
+
+
+To do:
+
+Views:
+Home – List some projects DONE
+Project List -  Improve look
+Project View – Add Make Pledge button + improve look
+New Project Form
+Edit Project Form
+Project Created/Successfully Edited
+User Account – Includes list of projects and pledges  DONE
+User Sign-up Form 	DONE
+Sign-up successful 	DONE
+User List for Admin
+New Pledge Form
+Pledge added Successfully
+
+Controllers:
+Projects - Add creation date and end date and Picture
+Pledge – Add date
+
+Validation:
+New Project Form
+User Sign-up Form DONE
+New Pledge Form
+
+Junit + Mockito
+User Repository Test
+Project Repository Test
+Pledge Repository Test
+Roles Repository Test
+
+Extras
+Search + Sort Projects
+Anything else that’s handy

@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
+
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +28,7 @@ public class User {
     // Set up when registering?? 
     // when making a pledge add up all the existing user pledge
     // amounts
+    @Range(min=1, max=1000000)
     private float creditLimit; 
 	
  //   private String passwordConfirm;

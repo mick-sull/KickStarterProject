@@ -18,11 +18,11 @@
 			<form th:action="@{/user/register}"  th:object="${user}" method="POST">
 			  <input type="text"  placeholder="username" id="username" name="username" autofocus="autofocus" /> <br />
 			  <input type="password"  placeholder="password" id="password" name="password" /> <br />
+			  <input type="text"  placeholder="credit limit" id="creditLimit" name="creditLimit" /> <br />
 			   <!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->
 			  <input type="submit" value="Sign up"/>
 			  <p class="message">Registered? <a href="/user/login">Sign in!</a></p>
-			  						<input
-				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
   </div>
 </div>
