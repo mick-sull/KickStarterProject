@@ -20,6 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import ie.cit.entity.Project;
 import ie.cit.repository.ProjectRepository;
+import ie.cit.service.ProjectService;
 
 
 /**
@@ -30,7 +31,7 @@ import ie.cit.repository.ProjectRepository;
 public class ProjectController extends WebMvcConfigurerAdapter{
 
 	@Autowired
-	ProjectRepository projectRepository;
+	ProjectService projectService;
 	
 	@Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -40,7 +41,7 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 	@RequestMapping("/")
 	public String list(Model model) {
 		
-		Iterable<Project> a= projectRepository.findAll();
+		Iterable<Project> a= projectService.findAll();
 		List<Project> projects = new ArrayList<Project>();
 		a.forEach(projects::add);
 		model.addAttribute("project", projects);
@@ -51,7 +52,7 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String view(Model model, @PathVariable("id") long id) {
 		
-		Project proj = projectRepository.findById(id);
+		Project proj = projectService.findById(id);
 		
 		model.addAttribute("project", proj);
 		Calendar today = Calendar.getInstance();

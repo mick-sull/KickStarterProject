@@ -38,7 +38,7 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 	public List<Project> findByName(String fullName); // SELECT * FROM projects WHERE name LIKE '%xxxxx%'
 
 
-	
+	public List<Project> findAll();
 
 	
 }

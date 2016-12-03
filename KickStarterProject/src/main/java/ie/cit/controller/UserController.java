@@ -31,6 +31,7 @@ import ie.cit.entity.User;
 import ie.cit.repository.ProjectRepository;
 import ie.cit.repository.UserRepository;
 import ie.cit.service.CustomUserDetails;
+import ie.cit.service.ProjectService;
 import ie.cit.service.UserService;
 
 @Controller
@@ -38,16 +39,8 @@ import ie.cit.service.UserService;
 @RequestMapping("/user")
 public class UserController extends WebMvcConfigurerAdapter{ 
 	
-
-	@Autowired
-	UserRepository userRepository;
-	
-
 	@Autowired
 	UserService userService;
-	
-	@Autowired
-	ProjectRepository projectRepository;
 	
 	private final String LOGIN_PAGE = "login";
 	
@@ -110,7 +103,7 @@ public class UserController extends WebMvcConfigurerAdapter{
 	   	
 		model.addAttribute("username", "Welcome " + getPrincipal() + "!");
 		System.out.println("request.getSession()" +  getPrincipal());
-		User user = userRepository.findByUsername( getPrincipal());
+		User user = userService.findUserByUsername( getPrincipal());
 		
 
 		Iterable<Project> a = user.getProjects();
