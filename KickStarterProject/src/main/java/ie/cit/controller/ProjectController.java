@@ -1,6 +1,7 @@
 package ie.cit.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -43,7 +44,6 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 		List<Project> projects = new ArrayList<Project>();
 		a.forEach(projects::add);
 		model.addAttribute("project", projects);
-		System.out.println("" + projects.get(0));
 		
 		return "project/list";
 	}
@@ -54,6 +54,10 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 		Project proj = projectRepository.findById(id);
 		
 		model.addAttribute("project", proj);
+		Calendar today = Calendar.getInstance();
+		Long milis = proj.getDeadLine().getTime().getTime() - today.getTime().getTime();
+		int days = (int)(milis/(1000*60*60*24));
+		model.addAttribute("daysToGo", days);
 		
 		return "project/view";
 	}

@@ -16,6 +16,14 @@
 					<td><span th:text="${project.description}">Project Name</span></td>
 				</tr>
 				<tr>
+					<td>Creation Date</td>
+					<td><span th:text="${project.getCreationDateString()}">Date</span></td>
+				</tr>
+				<tr>
+					<td>Image</td>
+					<td><img th:attr="src=@{${project.imagePath}}" class="proj_img_thumb"/></td>
+				</tr>
+				<tr>
 					<td>Goal</td>
 					<td> <span th:text="${project.goalAmount}">Goal Amount</span></td>
 				</tr>
@@ -27,6 +35,10 @@
 					<td>Owner</td> 
 					<td><span th:text="${project.owner.username}">Owner Name</span></td>
 				</tr>
+				<tr>
+					<td>Days to go</td> 
+					<td><span th:text="${daysToGo}">days</span></td>
+				</tr>
 			</table>
 			<br />
 			<h3>Contributers</h3>
@@ -34,10 +46,12 @@
 				<tr>
 					<th>User</th>
 					<th>Amount</th>
+					<th>Date</th>
 				</tr>
 				<tr th:each="pledge: ${project.pledges}">
 					<td th:text="${pledge.user.username}">Username</td>
 					<td th:text="${pledge.amount}">Amount</td>
+					<td th:text="${pledge.getPledgeDateString()}">Date</td>
 				</tr>
 			</table>
 			

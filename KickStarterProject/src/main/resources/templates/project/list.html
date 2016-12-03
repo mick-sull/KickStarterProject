@@ -12,9 +12,17 @@
 			
 			<table>
 				<tr th:each="proj: ${project}">
-					<td th:text="${proj.id}">Id</td>
+					<td><div class="proj_list">
+						<img th:attr="src=@{${proj.imagePath}}" class="proj_img_list" />
+						<h3 th:text="${proj.name}">Name</h3>
+						<p th:text="${proj.description}">Description</p>
+						
+						[<a th:href="@{/project/__${proj.id}__}">view</a>]
+						
+					</div></td>
+					<!-- <td th:text="${proj.id}">Id</td>
 					<td th:text="${proj.name}">Name</td>
-					<td>[<a th:href="@{/project/__${proj.id}__}">view</a>]</td>
+					<td>[<a th:href="@{/project/__${proj.id}__}">view</a>]</td> -->
 				</tr>
 			</table>
 		</div>

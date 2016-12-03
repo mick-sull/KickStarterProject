@@ -1,5 +1,7 @@
 package ie.cit.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
@@ -30,25 +34,24 @@ public class Project {
 	@Column(name = "description", nullable = false,length = 200)
 	private String description;
 	
-	
-	//private Image picture
-	
 	@Column(name = "goalAmount", precision = 2)
 	private float goalAmount;
 	
-	
-	//private Datetime timeLimit;
 	@ManyToOne
 	@JoinColumn(name = "owner_id" )
 	private User owner;
 	
 	
-	//List of contributers
-	//List<User> contributers;
-	
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	List<Pledge> pledges; 
 	
+	@Temporal(TemporalType.DATE)
+	private Calendar deadLine;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Calendar creationDate;
+	
+	private String imagePath;
 	
 	
 	public Project(){}	
@@ -140,5 +143,45 @@ public class Project {
 		double balance = goalAmount - getBalance();
 		return balance;
 	}
+
+	public Calendar getDeadLine() {
+		return deadLine;
+	}
+
+	public void setDeadLine(Calendar deadLine) {
+		this.deadLine = deadLine;
+	}
+
+	public Calendar getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Calendar creationDate) {
+		this.creationDate = creationDate;
+	}
+	
+	public String getCreationDateString(){
+		String date = "";
+		SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy");
+		date = formatter.format(this.creationDate.getTime());
+		return date;
+	}
+	
+	public String getDateString(Calendar calander){
+		String date = "";
+		SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy");
+		date = formatter.format(calander.getTime());
+		return date;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+	
+	
 	
 }
