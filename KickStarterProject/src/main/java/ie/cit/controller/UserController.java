@@ -33,6 +33,7 @@ import ie.cit.repository.PledgeRepository;
 import ie.cit.repository.ProjectRepository;
 import ie.cit.repository.UserRepository;
 import ie.cit.service.CustomUserDetails;
+import ie.cit.service.ProjectService;
 import ie.cit.service.UserService;
 
 @Controller
@@ -41,14 +42,12 @@ import ie.cit.service.UserService;
 public class UserController extends WebMvcConfigurerAdapter{ 
 	
 
+
 	@Autowired
 	UserRepository userRepository;
 
 	@Autowired
 	UserService userService;
-	
-	@Autowired
-	ProjectRepository projectRepository;
 	
 	@Autowired
 	PledgeRepository pledgeRepository;
@@ -114,7 +113,7 @@ public class UserController extends WebMvcConfigurerAdapter{
 	   	
 		model.addAttribute("username", "Welcome " + getPrincipal() + "!");
 		System.out.println("request.getSession()" +  getPrincipal());
-		User user = userRepository.findByUsername( getPrincipal());
+		User user = userService.findUserByUsername( getPrincipal());
 		
 
 		Iterable<Project> a = user.getProjects();
