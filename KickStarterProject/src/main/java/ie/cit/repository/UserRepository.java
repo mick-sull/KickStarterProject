@@ -18,11 +18,9 @@ public interface UserRepository extends CrudRepository<User, Long> {  //JpaRepos
 	public User findByUsername(String username);
     public User findByUsernameAndPassword(String username, String password);
     public User findById(long id);
-<<<<<<< HEAD
+
     public List<User> findAll();
-=======
-    
->>>>>>> branch 'master' of https://github.com/mick-sull/KickStarterProject.git
+
     
     // create method (save Project Object)
 	
