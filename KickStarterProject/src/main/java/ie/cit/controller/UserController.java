@@ -120,7 +120,7 @@ public class UserController extends WebMvcConfigurerAdapter{
 		List<Project> projects = new ArrayList<Project>();
 		a.forEach(projects::add);
 		model.addAttribute("project", projects);
-		System.out.println("" + projects.get(0));
+		//System.out.println("" + projects.get(0));
 		
 		
 		/*
