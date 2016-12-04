@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import ie.cit.service.CustomUserDetailsService;
 
@@ -38,12 +39,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.usernameParameter("username")
 			.passwordParameter("password")
 			.defaultSuccessUrl("/user/profile")
+			.and()
+			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
 			
-			
-	.and()
-		.logout()
-			.logoutUrl("/j_spring_security_logout")
-			.logoutSuccessUrl("/login?logout")
+	//.and()
+	//	.logout()
+	//		.logoutUrl("/j_spring_security_logout")
+	//		.logoutSuccessUrl("/user/login?logout")
 	.and()
 		.exceptionHandling()
 		.accessDeniedPage("/403");
