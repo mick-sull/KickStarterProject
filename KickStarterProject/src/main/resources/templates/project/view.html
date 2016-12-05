@@ -1,71 +1,73 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Project</title>
-    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+<title>Project</title>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
-<body> 
+<body>
 	<div th:include="fragments/header :: header"></div>
 	<div id="main">
 		<div class="innerMain">
 			<h1 th:text="${project.name}">Project Title</h1>
-			
+
 			<div th:if="${param.pledgeSuccessful}">
-					 <h2>Pledge was successfully Made!</h2>
-				</div>
-			
-			<table>
-				<tr>
-					<td>Description</td>
-					<td><span th:text="${project.description}">Project Name</span></td>
-				</tr>
-				<tr>
-					<td>Creation Date</td>
-					<td><span th:text="${project.getCreationDateString()}">Date</span></td>
-				</tr>
-				<tr>
-					<td>Image</td>
-					<td><img th:attr="src=@{${project.imagePath}}" class="proj_img_thumb"/></td>
-				</tr>
-				<tr>
-					<td>Goal</td>
-					<td> <span th:text="${project.goalAmount}">Goal Amount</span></td>
-				</tr>
-				<tr>
-					<td>Pledged</td>
-					<td> <span th:text="${project.getPledged()}">Pledged Amount</span></td>
-				</tr>
-				<tr>
-					<td>Owner</td> 
-					<td><span th:text="${project.owner.username}">Owner Name</span></td>
-				</tr>
-				<tr>
-					<td>Days to go</td> 
-					<td><span th:text="${daysToGo}">days</span></td>
-					<td></td>
-				</tr>
-				<tr>
-					 <td><a th:href="@{/project/__${project.getId()}__/pledge/}">Back This Project</a></td>
-				</tr>
-				 
-			</table>
+				<h2>Pledge was successfully Made!</h2>
+			</div>
+
+			<div class="proj_view_details">
+				<table class="proj_view">
+					<tr>
+						<td>Owner</td>
+						<td><span th:text="${project.owner.username}">Owner
+								Name</span></td>
+						<td rowspan="5"><img th:attr="src=@{${project.imagePath}}"
+							class="proj_img_view" /> <span th:text="${project.description}">Project
+								Description</span></td>
+					</tr>
+					<tr>
+						<td>Creation Date</td>
+						<td><span th:text="${project.getCreationDateString()}">Date</span></td>
+
+					</tr>
+					<tr>
+						<td>Goal</td>
+						<td><span th:text="${project.goalAmount}">Goal Amount</span></td>
+					</tr>
+					<tr>
+						<td>Pledged</td>
+						<td><span th:text="${project.getPledged()}">Pledged
+								Amount</span></td>
+					</tr>
+					<tr>
+						<td>Days to go</td>
+						<td><span th:text="${daysToGo}">days</span></td>
+
+					</tr>
+
+				</table>
+			</div>
 			<br />
-			<h3>Contributers</h3>
-			<table>
-				<tr>
-					<th>User</th>
-					<th>Amount</th>
-					<th>Date</th>
-				</tr>
-				<tr th:each="pledge: ${project.pledges}">
-					<td th:text="${pledge.user.username}">Username</td>
-					<td th:text="${pledge.amount}">Amount</td>
-					<td th:text="${pledge.getPledgeDateString()}">Date</td>
-				</tr>
-			</table>
-			
-			
-			
+
+			<div class="proj_view_contrib">
+				<h3>Contributers</h3>
+				<table>
+					<tr>
+						<th>User</th>
+						<th>Amount</th>
+						<th>Date</th>
+					</tr>
+					<tr th:each="pledge: ${project.pledges}">
+						<td th:text="${pledge.user.username}">Username</td>
+						<td th:text="${pledge.amount}">Amount</td>
+						<td th:text="${pledge.getPledgeDateString()}">Date</td>
+					</tr>
+				</table>
+			</div>
+
+			<a sec:authorize="isAuthenticated()" class="button right"
+				th:href="@{/project/__${project.getId()}__/pledge/}">Back This
+				Project</a>
+
 		</div>
 	</div>
 
