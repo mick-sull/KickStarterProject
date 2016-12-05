@@ -2,7 +2,9 @@ package ie.cit.service;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +16,8 @@ import ie.cit.repository.PledgeRepository;
 @Service
 @Transactional
 public class PledgeService {
+	
+	@Autowired
 	private PledgeRepository pledgeRepository;
 
 	
@@ -29,6 +33,10 @@ public class PledgeService {
 		
 		//pledge.setPledgeDate(today.getTime());
 		pledgeRepository.save(pledge);
+/*		Pledge sPledge = pledgeRepository.save(pledge);
+		System.out.println("sPledge " + sPledge.getAmount());
+		System.out.println("sPledge " + sPledge.getPledgeDate());
+		System.out.println("sPledge " + sPledge.getId());*/
 
 	}
 	
@@ -36,5 +44,20 @@ public class PledgeService {
 	public void deleteById(Long id)
 	{
 		pledgeRepository.delete(id);
+	}
+	
+	public double getTotalAmountOfPledges(User user){
+		List<Pledge> pledges = pledgeRepository.findByUser(user);
+		double totalPledges = 0;
+		if(pledges.isEmpty()){
+			return 0;
+		}
+		else{
+			for (int i = 0; i<pledges.size(); i++){
+				totalPledges += pledges.get(i).getAmount();
+			}
+		}
+		return totalPledges;
+		
 	}
 }

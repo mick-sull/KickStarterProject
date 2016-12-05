@@ -11,10 +11,20 @@
 					<div th:if="${param.error}">
 					 <a th:href="@{/login}">Please Log In Before Pledging</a>
 				</div>
+				
+				<div th:if="${param.errorCreditLimit}">
+					 <a th:href="@{/login}">Please Log In Before Pledging</a>
+				</div>
 				<h1 th:text="${project.name}">Project Title</h1>
-				<div th:if="${param.logout}">
-					You have been logged out.
-				</div><td>Project: <span th:text="${project.name}">Project Name</span></td>
+				
+				<table>
+						<tr>
+						<td>Description: <span th:text="${project.description}">Project Description</span></td>
+						</tr>
+						<tr>
+						<h3><td sec:authorize="isAuthenticated()"> <span>Credits remaining: </span><span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(creditRemaining)}">Credit Remaining</span></td></h3>
+						</tr>
+				</table>
 				<form th:action="@{/project/__${project.getId()}__/pledge/submit}"  th:object="${Pledge}" method="POST">
 				  <input type="text"  placeholder="Amount (€) " id="amount" name="amount" autofocus="autofocus" /> <br />
 				   <!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->

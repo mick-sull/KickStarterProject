@@ -88,6 +88,11 @@ public class ProjectController extends WebMvcConfigurerAdapter{
     	}
     	else{
     		//timestamp'2016-09-09 09:30:25 GMT', '2016-12-15','Description 1', 1200.00, '../images/money_tree.jpg
+    		
+/*    		System.out.println("ProjectController getDescription " + project.getDescription() );
+    		System.out.println("ProjectController  getGoalAmount " + project.getGoalAmount() );
+    		System.out.println("ProjectController getName " + project.getName() );*/
+    		
     		project.setOwner(userRepository.findById(2));
     		project.setImagePath("../images/money_tree.jpg");
     		
