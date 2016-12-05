@@ -161,7 +161,7 @@ public class UserController extends WebMvcConfigurerAdapter{
 	public String cancalPledge(@PathVariable("id") long id) {
 		pledgeRepository.delete(id);
 		System.out.println("Pledge Deleted");
-		return "home";
+		return "redirect:/user/profile";
 	}
    
 

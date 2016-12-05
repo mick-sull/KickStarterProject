@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="projects")
@@ -26,7 +27,7 @@ public class Project {
 	@Id
 	@Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private long id;
 	
 	@Column(name = "name", nullable = false,length = 50)
 	private String name;
@@ -46,10 +47,11 @@ public class Project {
 	List<Pledge> pledges; 
 	
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat (pattern="yyyy-mm-dd")
 	private Calendar deadLine;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private Calendar creationDate;
 	
 	private String imagePath;
