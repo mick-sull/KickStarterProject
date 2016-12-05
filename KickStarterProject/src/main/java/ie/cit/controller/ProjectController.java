@@ -88,8 +88,7 @@ public class ProjectController extends WebMvcConfigurerAdapter{
     	}
     	else{
     		//timestamp'2016-09-09 09:30:25 GMT', '2016-12-15','Description 1', 1200.00, '../images/money_tree.jpg
-    		User currentUser = userRepository.findByUsername(getPrincipal());
-    		project.setOwner(currentUser);
+    		project.setOwner(userRepository.findById(2));
     		project.setImagePath("../images/money_tree.jpg");
     		
     		Calendar cal = Calendar.getInstance();
