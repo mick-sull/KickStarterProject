@@ -80,7 +80,7 @@ public class PledgeController  extends WebMvcConfigurerAdapter{
 			   System.out.println("pledge amount: " + pledge.getAmount());
 			   return "redirect:/project/"+ id + "/pledge/?error";
 		   }
-		   else if (user.getId().equals(project.getOwner().getId())){//if the pledge user is the owner of the project
+		   else if (user.getId() == project.getOwner().getId()){//if the pledge user is the owner of the project
 			   return "redirect:/project/?pledgeUnsuccessful";
 		   }
 			   
