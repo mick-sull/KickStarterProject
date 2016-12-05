@@ -47,7 +47,7 @@ public class Project {
 	List<Pledge> pledges; 
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat (pattern="yyyy-mm-dd")
+	@DateTimeFormat (pattern="yyyy-MM-dd")
 	private Calendar deadLine;
 	
 	@Temporal(TemporalType.TIMESTAMP)

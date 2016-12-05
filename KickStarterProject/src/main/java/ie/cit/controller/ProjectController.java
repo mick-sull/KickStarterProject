@@ -1,11 +1,17 @@
 package ie.cit.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +26,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -37,6 +45,9 @@ import ie.cit.service.ProjectService;
 @Controller
 @RequestMapping("/project")
 public class ProjectController extends WebMvcConfigurerAdapter{
+	
+	@Autowired
+    ServletContext context;
 
 	@Autowired
 	ProjectService projectService;
@@ -84,16 +95,48 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 	}
 
 	@PostMapping("/newProj")
-	public String checkProjectInfo(@Valid Project project, BindingResult bindingResult) {
+	public String checkProjectInfo(@RequestParam("projectImage") MultipartFile image, @Valid Project project, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return "project/projForm";
 		}
 		else{
 			//timestamp'2016-09-09 09:30:25 GMT', '2016-12-15','Description 1', 1200.00, '../images/money_tree.jpg
+			
+			InputStream inputStream = null;
+	        OutputStream outputStream = null;
+	        String fileName = image.getOriginalFilename();
+	        
+	        String relativeWebPath = "/resources/static/images";
+	        String absoluteFilePath = context.getRealPath(relativeWebPath);
+	        //File newFile = new File(absoluteFilePath + "/" + fileName);
+	        String myPath = "C:/Users/Colmos/Documents/Cork Institute Of Technology/GitRepos/KickStarterProject/KickStarterProject/src/main/resources/static/images";
+	        File newFile = new File(myPath + "/" + fileName);
+	        
+	        
+	        System.out.println("Absolute path " + absoluteFilePath);
 
+	        try {
+	            inputStream = image.getInputStream();
+
+	            if (!newFile.exists()) {
+	                newFile.createNewFile();
+	            }
+	            outputStream = new FileOutputStream(newFile);
+	            int read = 0;
+	            byte[] bytes = new byte[1024];
+
+	            while ((read = inputStream.read(bytes)) != -1) {
+	                outputStream.write(bytes, 0, read);
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+			
+			
 			project.setOwner(userRepository.findByUsername(getPrincipal()));
-			project.setImagePath("../images/money_tree.jpg");
+			project.setImagePath("../images/" + image.getOriginalFilename());
+			System.out.println("Image location:: " + project.getImagePath());
 
 			Calendar cal = Calendar.getInstance();
 			project.setCreationDate(cal);
