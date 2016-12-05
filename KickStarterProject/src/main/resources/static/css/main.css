@@ -204,6 +204,13 @@ body {
 	min-height: 220px;
 }
 
+.proj_list a{
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px;
+	
+}
+
 .pledges_list {
 	padding: 10px;
 	margin: 10px;

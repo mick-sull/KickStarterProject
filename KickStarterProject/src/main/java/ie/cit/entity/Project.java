@@ -32,7 +32,7 @@ public class Project {
 	@Column(name = "name", nullable = false,length = 50)
 	private String name;
 	
-	@Column(name = "description", nullable = false,length = 200)
+	@Column(name = "description", nullable = false, length = 2000)
 	private String description;
 	
 	@Column(name = "goalAmount", precision = 2)
