@@ -26,7 +26,7 @@ public class Project {
 	@Id
 	@Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	
 	@Column(name = "name", nullable = false,length = 50)
 	private String name;
@@ -49,12 +49,19 @@ public class Project {
 	private Calendar deadLine;
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Calendar creationDate;
 	
 	private String imagePath;
 	
 	
-	public Project(){}	
+	public Project(){}
+	
+	public Project(String name, String description, float goalAmount){
+		this.name = name;
+		this.description = description;
+		this.goalAmount = goalAmount;
+	}
 
 	public Project(long id, String name, String description, float goalAmount) {
 		super();
@@ -63,9 +70,6 @@ public class Project {
 		this.description = description;
 		this.goalAmount = goalAmount;
 		
-		
-		
-		// chage 18.18
 	}
 	
 	
