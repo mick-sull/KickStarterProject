@@ -30,14 +30,14 @@ public class RoleService {
 //		CriteriaQuery<Role> query=builder.createQuery(Role.class);
 //		Root<Role> root=query.from(Role.class);
 //		Predicate userRole = builder.equal(root.get(""), user.getId());
-		System.out.println(user);
+/*		System.out.println(user);
 		System.out.println(role);
 		if(user.getRoles()==null){
 			return false;
 		}
 		if(user.getRoles().contains(role)){
 			return true;
-		}
+		}*/
 		return false;
 	}
 }

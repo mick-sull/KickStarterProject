@@ -3,6 +3,7 @@ package ie.cit.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,7 +17,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import ie.cit.entity.Pledge;
 import ie.cit.entity.Project;
+import ie.cit.entity.Role;
 import ie.cit.repository.PledgeRepository;
+import ie.cit.repository.RoleRepository;
 
 
 /**
@@ -35,6 +38,10 @@ public class HomeController extends WebMvcConfigurerAdapter {
 	@Autowired
 	PledgeRepository pledgedRepository;
 	
+/*	
+	@Autowired
+	private RoleRepository roleRepository;
+	*/
 
 	@Override
     public void addViewControllers(ViewControllerRegistry registry) {
