@@ -12,6 +12,15 @@
 		<div class="innerMain">
 			<h1>Projects</h1>
 			
+		<div th:if="${param.pledgeSuccessful}">
+			<h2>Pledge was successfully made!</h2>
+		</div>
+		
+		<div th:if="${param.pledgeUnsuccessful}">
+			<h2>Error: Cant pledge to own project!</h2>
+		</div>
+
+			
 			<table>
 				<tr th:each="proj: ${project}">
 					<td><div class="proj_list">
