@@ -10,6 +10,10 @@
 		<div class="innerMain">
 			<h1 th:text="${project.name}">Project Title</h1>
 			
+			<div th:if="${param.pledgeSuccessful}">
+					 <h2>Pledge was successfully Made!</h2>
+				</div>
+			
 			<table>
 				<tr>
 					<td>Description</td>
@@ -39,7 +43,9 @@
 					<td>Days to go</td> 
 					<td><span th:text="${daysToGo}">days</span></td>
 					<td></td>
-					 <td><a th:href="@{/project/__${project.getId()}__/pledge/}">Back This Project1</a></td>
+				</tr>
+				<tr>
+					 <td><a th:href="@{/project/__${project.getId()}__/pledge/}">Back This Project</a></td>
 				</tr>
 				 
 			</table>

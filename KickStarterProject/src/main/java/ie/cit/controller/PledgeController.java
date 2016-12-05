@@ -39,6 +39,8 @@ public class PledgeController  extends WebMvcConfigurerAdapter{
 	PledgeService pledgeService;
 	
 	
+	double totalPledged = 0;
+	
 	@Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("pledge");
@@ -50,14 +52,20 @@ public class PledgeController  extends WebMvcConfigurerAdapter{
 		
 		Project proj = projectRepository.findById(id);
 		
-		System.out.println("PledgeController ID: " + proj.getId());
-		System.out.println("PledgeController getPrincipal() : " + getPrincipal());
+		if(!getPrincipal().equals("anonymousUser")){//If the user is logged in
+			   User user = userRepository.findByUsername( getPrincipal());
+			   totalPledged = pledgeService.getTotalAmountOfPledges(user);
+			   model.addAttribute("creditRemaining", (user.getCreditLimit() - totalPledged));
+			   //return "redirect:/project/"+ id + "/pledge/?error";
+		   }
+		
+
 		
 		model.addAttribute("project", proj);
-		Calendar today = Calendar.getInstance();
+/*		Calendar today = Calendar.getInstance();
 		Long milis = proj.getDeadLine().getTime().getTime() - today.getTime().getTime();
 		int days = (int)(milis/(1000*60*60*24));
-		model.addAttribute("daysToGo", days);
+		model.addAttribute("daysToGo", days);*/
 		
 		return "pledge/pledgeView";
 	}
@@ -65,31 +73,27 @@ public class PledgeController  extends WebMvcConfigurerAdapter{
 	   @PostMapping("/submit")
 	   public String checkUserInfo(@Valid Pledge pledge, BindingResult bindingResult, @PathVariable("id") long id) {
 		   
+		   User user = userRepository.findByUsername( getPrincipal());
+		   Project project = projectRepository.findById(id);
+		   
 		   if(getPrincipal().equals("anonymousUser")){
 			   System.out.println("pledge amount: " + pledge.getAmount());
 			   return "redirect:/project/"+ id + "/pledge/?error";
 		   }
-		   else{
-			   Project project = projectRepository.findById(id);
-			   User user = userRepository.findByUsername( getPrincipal());
-			   return "redirect:/project/"+ id + "/";
+		   else if (user.getId().equals(project.getOwner().getId())){//if the pledge user is the owner of the project
+			   return "redirect:/project/?pledgeUnsuccessful";
 		   }
-/*		   User user = userRepository.findByUsername( getPrincipal());
-		   pledgeService.add(pledge, user);
-		   		return "redirect:/project/"+ id + "/pledge/";*/
-		   		///project/__${project.getId()}__/pledge/
-/*
-	       //if ((user.getUsername().equals(null)) ||(user.getPassword().equals(null))) {
-		   //if ((user.getUsername() == null) ||(user.getPassword() == null)) {
-		   pledgeRepository.save(pledge);
+			   
+		   else if (pledge.getAmount() > user.getCreditLimit() - totalPledged ){
+			   return "redirect:/project/"+ id + "/pledge/?errorCreditLimit";			   
+		   }
 		   
-		   if (bindingResult.hasErrors()) {
-	           return "redirect:/user/register?error";
-	       }
-	       else{
-	    	   userService.add(user);*/
-	    	   //return "redirect:/login";
-	       }
+		   else{
+			   pledgeService.add(pledge, user, project);
+			   //return "redirect:/project/"+ id + "/";
+			   return "redirect:/project/?pledgeSuccessful";
+		   }
+	      }
 	
 	
 	private String getPrincipal(){
