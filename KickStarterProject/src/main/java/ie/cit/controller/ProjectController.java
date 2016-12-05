@@ -1,8 +1,10 @@
 package ie.cit.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.validation.Valid;
 
@@ -89,19 +91,13 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 		}
 		else{
 			//timestamp'2016-09-09 09:30:25 GMT', '2016-12-15','Description 1', 1200.00, '../images/money_tree.jpg
-			User owner = userRepository.findById(2);
-			System.out.println(owner);
-			project.setOwner(owner);
+
+			project.setOwner(userRepository.findByUsername(getPrincipal()));
 			project.setImagePath("../images/money_tree.jpg");
 
 			Calendar cal = Calendar.getInstance();
-			cal.clear();
-			cal.set(Calendar.YEAR, 2017);
-			cal.set(Calendar.MONTH, 02);
-			cal.set(Calendar.DATE, 10);
-			java.util.Date utilDate = cal.getTime();
+			project.setCreationDate(cal);
 
-			project.setDeadLine(cal);
 			projectService.save(project);
 			return "redirect:/project/projCreated";
 		}

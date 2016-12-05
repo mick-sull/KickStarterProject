@@ -29,13 +29,19 @@
 						<td th:if="${#fields.hasErrors('goalAmount')}"
 							th:errors="*{goalAmount}">Amount Error</td>
 					</tr>
-					<!--
-                <tr>
-                    <td>Deadline:</td>
-                    <td><input type="date" th:field="*{deadLine}" /></td>
-                    <td th:if="${#fields.hasErrors('deadLine')}" th:errors="*{deadLine}">Deadline</td>
-                </tr>
-                -->
+					
+	                <tr>
+	                    <td>Deadline:</td>
+	                    <td><input type="date" th:field="*{deadLine}" /></td>
+	                    <td th:if="${#fields.hasErrors('deadLine')}" th:errors="*{deadLine}">Deadline</td>
+	                </tr> 
+                
+                	<tr>
+	                    <td>Deadline:</td>
+	                    <td><input type="file" th:field="*{imagePath}" /> <br/></td>
+	                    <td th:if="${#fields.hasErrors('imagePath')}" th:errors="*{imagePath}">Deadline</td>
+	                </tr>
+
 					<tr>
 						<td><button type="submit">Submit</button></td>
 					</tr>
