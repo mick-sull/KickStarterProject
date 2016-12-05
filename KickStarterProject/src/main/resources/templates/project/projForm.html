@@ -5,35 +5,43 @@
 <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
-    <div th:include="fragments/header :: header"></div>
-    <form action="#" th:action="@{/project/newProj}" th:object="${project}" method="post">
-            <table>
-                <tr>
-                    <td>Name:</td>
-                    <td><input type="text" th:field="*{name}" /></td>
-                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
-                </tr>
-                <tr>
-                    <td>Description:</td>
-                    <td><input type="text" th:field="*{description}" /></td>
-                    <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
-                </tr>
-                <tr>
-                    <td>Goal Amount:</td>
-                    <td><input type="text" th:field="*{goalAmount}" /></td>
-                    <td th:if="${#fields.hasErrors('goalAmount')}" th:errors="*{goalAmount}">Amount Error</td>
-                </tr>
-                <!--
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			<form action="#" th:action="@{/project/newProj}"
+				th:object="${project}" method="post">
+				<table>
+					<tr>
+						<td>Name:</td>
+						<td><input type="text" th:field="*{name}" /></td>
+						<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
+							Error</td>
+					</tr>
+					<tr>
+						<td>Description:</td>
+						<td><input type="text" th:field="*{description}" /></td>
+						<td th:if="${#fields.hasErrors('description')}"
+							th:errors="*{description}">Description Error</td>
+					</tr>
+					<tr>
+						<td>Goal Amount:</td>
+						<td><input type="text" th:field="*{goalAmount}" /></td>
+						<td th:if="${#fields.hasErrors('goalAmount')}"
+							th:errors="*{goalAmount}">Amount Error</td>
+					</tr>
+					<!--
                 <tr>
                     <td>Deadline:</td>
                     <td><input type="date" th:field="*{deadLine}" /></td>
                     <td th:if="${#fields.hasErrors('deadLine')}" th:errors="*{deadLine}">Deadline</td>
                 </tr>
                 -->
-                <tr>
-                    <td><button type="submit">Submit</button></td>
-                </tr>
-            </table>
-        </form>
+					<tr>
+						<td><button type="submit">Submit</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
