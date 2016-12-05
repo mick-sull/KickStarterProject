@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="projects")
-public class Project {
+public class Project implements Comparable<Project>{
 	
 	@Id
 	@Column(name = "id", nullable = false)
@@ -188,6 +188,9 @@ public class Project {
 		this.imagePath = imagePath;
 	}
 	
-	
+	@Override
+	public int compareTo(Project otherProj) {
+	    return otherProj.getCreationDate().compareTo(this.getCreationDate());
+	}
 	
 }

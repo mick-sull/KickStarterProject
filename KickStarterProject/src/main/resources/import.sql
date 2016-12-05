@@ -16,9 +16,9 @@ INSERT INTO projects VALUES (NULL, timestamp'2016-12-02 09:30:25 GMT', '2017-02-
 
 
 INSERT INTO pledges VALUES (NULL, 15.0, timestamp'2016-10-29 09:30:25 GMT', 2, 4), (NULL, 120.0, timestamp'2016-11-09 09:30:25 GMT', 1, 2), (NULL, 75.0, timestamp'2016-10-30 09:30:25 GMT', 4, 2);
-INSERT INTO pledges VALUES (NULL, 25.0, timestamp'2016-12-01 09:30:25 GMT', 2, 3), (NULL, 20.0, timestamp'2016-12-01 09:30:25 GMT', 1, 3), (NULL, 50.0, timestamp'2016-12-01 09:30:25 GMT', 4, 3);
+INSERT INTO pledges VALUES (NULL, 25.0, timestamp'2016-12-01 07:30:25 GMT', 2, 3), (NULL, 20.0, timestamp'2016-12-01 09:30:25 GMT', 1, 3), (NULL, 50.0, timestamp'2016-12-02 09:30:25 GMT', 4, 3);
 
-INSERT INTO pledges VALUES (NULL, 20.0, timestamp'2016-12-03 09:30:25 GMT', 5, 5);
-INSERT INTO pledges VALUES (NULL, 50.0, timestamp'2016-12-03 09:30:25 GMT', 6, 6);
-INSERT INTO pledges VALUES (NULL, 40.0, timestamp'2016-12-03 09:30:25 GMT', 6, 7);
+INSERT INTO pledges VALUES (NULL, 20.0, timestamp'2016-12-03 06:30:25 GMT', 5, 5);
+INSERT INTO pledges VALUES (NULL, 50.0, timestamp'2016-12-03 07:30:25 GMT', 6, 6);
+INSERT INTO pledges VALUES (NULL, 40.0, timestamp'2016-12-03 08:30:25 GMT', 6, 7);
 INSERT INTO pledges VALUES (NULL, 70.0, timestamp'2016-12-03 09:30:25 GMT', 7, 6);
