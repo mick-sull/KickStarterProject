@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Insert title here</title>
+<title>Project Created</title>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
-	Project Created
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			Project Created
+		</div>
+	</div>
 </body>
 </html>
