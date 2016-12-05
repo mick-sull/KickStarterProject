@@ -5,13 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
-import javax.servlet.ServletContext;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +44,6 @@ import ie.cit.service.ProjectService;
 @RequestMapping("/project")
 public class ProjectController extends WebMvcConfigurerAdapter{
 	
-	@Autowired
-    ServletContext context;
-
 	@Autowired
 	ProjectService projectService;
 
@@ -101,20 +96,13 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 			return "project/projForm";
 		}
 		else{
-			//timestamp'2016-09-09 09:30:25 GMT', '2016-12-15','Description 1', 1200.00, '../images/money_tree.jpg
 			
 			InputStream inputStream = null;
 	        OutputStream outputStream = null;
 	        String fileName = image.getOriginalFilename();
 	        
-	        String relativeWebPath = "/resources/static/images";
-	        String absoluteFilePath = context.getRealPath(relativeWebPath);
-	        //File newFile = new File(absoluteFilePath + "/" + fileName);
-	        String myPath = "C:/Users/Colmos/Documents/Cork Institute Of Technology/GitRepos/KickStarterProject/KickStarterProject/src/main/resources/static/images";
-	        File newFile = new File(myPath + "/" + fileName);
-	        
-	        
-	        System.out.println("Absolute path " + absoluteFilePath);
+	        String workingDir = System.getProperty("user.dir");
+	        File newFile = new File(workingDir + "/src/main/resources/static/images/" + fileName);
 
 	        try {
 	            inputStream = image.getInputStream();
