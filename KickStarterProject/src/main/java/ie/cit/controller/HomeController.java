@@ -47,7 +47,7 @@ public class HomeController extends WebMvcConfigurerAdapter {
 	public String home(Locale locale, Model model) {*/
 	@RequestMapping("/")
 	public String list(Model model) {	
-		Iterable<Pledge> a= pledgedRepository.findFirst5ByOrderByIdDesc();
+		Iterable<Pledge> a= pledgedRepository.findFirst5ByOrderByPledgeDateDesc();
 		List<Pledge> pledges = new ArrayList<Pledge>();
 		a.forEach(pledges::add);
 		model.addAttribute("pledge", pledges);
