@@ -32,7 +32,7 @@ public class Pledge {
     @JoinColumn(name = "project_id" )
 	private Project project;
 	
-	@Column(updatable=false, insertable=false)
+	//@Column(updatable=false, insertable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar pledgeDate;
 
@@ -80,6 +80,7 @@ public class Pledge {
 		String date = "";
 		SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy");
 		date = formatter.format(this.pledgeDate.getTime());
+		System.out.println(date);
 		return date;
 	}
 	

@@ -1,28 +1,54 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Projects</title>
-    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+<title>Projects</title>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
-<body> 
+<body>
 	<div th:include="fragments/header :: header"></div>
 	<div id="main">
 		<div class="innerMain">
-			<h1>Projects</h1>
-			<h2>Top 5 trending projects</h2>
-			
+			<h2>Latest Projects</h2>
 			<table>
-				<tr th:each="pled: ${pledge}">
- 					<td th:text="${pled.getId()}">Id</td>
-					<td th:text="${pled.getUser().getUsername()}">User</td>
-					<!-- <span th:inline="text">€<td th:text="${pled.getAmount()}">Amount</td></span> -->
-					
-					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(pled.getAmount())}" />
-					
-					<td><a th:text="${pled.getProject().getName()}" th:href="@{/project/__${pled.getProject().getId()}__}"></a></td>
+				<tr>
+					<td th:each="proj: ${project}"><div class="home_proj_list">
+							<h3 th:text="${proj.name}">Name</h3>
+							<div class="home_proj_list_text">
+							<img th:attr="src=@{${proj.imagePath}}" class="proj_img_thumb right" />
+							<p th:text="${proj.description}">Description</p>
+							</div>
+							<p><b>Goal: </b><b th:text="${proj.goalAmount}">Goal</b></p>
+							<a class="button" th:href="@{/project/__${proj.id}__}">View</a>
+
+						</div></td>
+
 				</tr>
 			</table>
+			<h2>Top 5 trending projects</h2>
+			<div class="trending">
+				<table>
+					<tr>
+						<th>User</th>
+						<th>Pledge Amount</th>
+						<th>Project</th>
+						<th></th>
+					</tr>
+					<tr th:each="pled: ${pledge}">
+						
+						<td th:text="${pled.getUser().getUsername()}">User</td>
+						<!-- <span th:inline="text">€<td th:text="${pled.getAmount()}">Amount</td></span> -->
+
+						<td
+							th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(pled.getAmount())}" />			
+						<td><div th:text="${pled.getProject().getName()}"></div>
+						
+						</td>
+						<td><div><a class="button" th:href="@{/project/__${pled.getProject().id}__}">View</a>
+						</div></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		</div>
+	</div>
 </body>
 </html>
