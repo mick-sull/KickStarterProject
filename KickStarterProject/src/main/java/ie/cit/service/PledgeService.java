@@ -31,4 +31,10 @@ public class PledgeService {
 		pledgeRepository.save(pledge);
 
 	}
+	
+	
+	public void deleteById(Long id)
+	{
+		pledgeRepository.delete(id);
+	}
 }

@@ -5,7 +5,8 @@
     <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body> 
-	<div th:include="fragments/header :: header"></div>
+	<div sec:authorize="isAnonymous()" th:include="fragments/header :: header"></div>
+	<div sec:authorize="isAuthenticated()" th:include="fragments/LoggedInHeader :: header"></div>
 	<div id="main">
 		<div class="innerMain">
 			<h1>User profile</h1>

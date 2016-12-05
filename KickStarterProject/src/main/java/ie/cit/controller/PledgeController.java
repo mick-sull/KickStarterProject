@@ -45,7 +45,7 @@ public class PledgeController  extends WebMvcConfigurerAdapter{
     }
 
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET) 
 	public String view(Model model, @PathVariable("id") long id) {
 		
 		Project proj = projectRepository.findById(id);
@@ -70,8 +70,8 @@ public class PledgeController  extends WebMvcConfigurerAdapter{
 			   return "redirect:/project/"+ id + "/pledge/?error";
 		   }
 		   else{
-/*			   Project project = projectRepository.findById(id);
-			   User user = userRepository.findByUsername( getPrincipal());*/
+			   Project project = projectRepository.findById(id);
+			   User user = userRepository.findByUsername( getPrincipal());
 			   return "redirect:/project/"+ id + "/";
 		   }
 /*		   User user = userRepository.findByUsername( getPrincipal());

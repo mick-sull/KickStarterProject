@@ -30,6 +30,10 @@
 				</tr>
 			</table>
 
+			
+
+			<a th:href="@{/user/newProj}">New Project</a>
+
 
 			<!--
 			<h3>My Projects</h3>			
@@ -71,7 +75,7 @@
 					<td th:text="${pledge.project.getDateString(pledge.project.getDeadLine())}">Project End Date</td>
 					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(pledge.amount)}">Amount Pledged</td>
 					<td th:text="${pledge.getPledgeDateString()}">Date of pledge</td>
-					<td><button type="button">Cancel</button></td>
+					<td><a th:href="@{/user/cancelpledge/__${pledge.id}__}"><span>Cancel</span></a></td>
 					<!--</div></td>-->
 				</tr>
 			</table>
