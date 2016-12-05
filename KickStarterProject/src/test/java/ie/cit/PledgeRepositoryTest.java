@@ -40,13 +40,6 @@ public class PledgeRepositoryTest {
 	}
 	
 	@Test
-	public void findFirst5ByOrderByIdDescTest(){
-		List<Pledge> pledges = pledgeRepository.findFirst5ByOrderByIdDesc();
-		assertNotNull(pledges);
-		assertTrue(pledges.size()>0);
-	}
-	
-	@Test
 	public void findAllTest(){
 		List<Pledge> pledges = pledgeRepository.findAll();
 		assertNotNull(pledges);
