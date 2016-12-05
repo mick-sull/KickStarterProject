@@ -39,6 +39,7 @@ public class HomeController extends WebMvcConfigurerAdapter {
 	@Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");
+        registry.addViewController("/logout").setViewName("logout");
     }
 	
 
@@ -55,6 +56,11 @@ public class HomeController extends WebMvcConfigurerAdapter {
 		}
 		
 		return "/list";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(Model model){
+		return "/logout";
 	}
 	
 }
