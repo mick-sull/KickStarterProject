@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +34,7 @@ import ie.cit.repository.PledgeRepository;
 import ie.cit.repository.ProjectRepository;
 import ie.cit.repository.UserRepository;
 import ie.cit.service.CustomUserDetails;
+import ie.cit.service.PledgeService;
 import ie.cit.service.ProjectService;
 import ie.cit.service.UserService;
 
@@ -51,6 +53,9 @@ public class UserController extends WebMvcConfigurerAdapter{
 	
 	@Autowired
 	PledgeRepository pledgeRepository;
+	
+	@Autowired
+	PledgeService pledgeService;
 	
 	private final String LOGIN_PAGE = "login";
 	
@@ -123,14 +128,6 @@ public class UserController extends WebMvcConfigurerAdapter{
 		//System.out.println("" + projects.get(0));
 		
 		
-		/*
-		 * Colm edit.
-		 * 
-		 * I was hoping make a custom query so I can join
-		 * pledge and project tables and then display them in the 
-		 * user  'My Pledges' section
-		 */
-		// Get the pledges this user has contributed to????
 		Iterable<Pledge> pl = user.getPledges();
 		List<Pledge> pledges = new ArrayList<Pledge>();
 		pl.forEach(pledges::add);
@@ -152,15 +149,23 @@ public class UserController extends WebMvcConfigurerAdapter{
        return userName;
    }
 
-
-/*	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public ModelAndView registerForm() {
-		System.out.println("GET");
-		ModelAndView model = new ModelAndView();
-		model.setViewName("register");
-		return model;
+   
+   
+   @GetMapping("/newProj")
+   public String showProjForm(Project project) {
+	   return "project/projForm";
+   }
+   
+   
+   @RequestMapping(value = "/cancelpledge/{id}", method=RequestMethod.GET)
+	public String cancalPledge(@PathVariable("id") long id) {
+		pledgeRepository.delete(id);
+		System.out.println("Pledge Deleted");
+		return "home";
 	}
-*/
+   
+
+	   
 /*
     //////WORKS BUT NOT PROPERLY
 
