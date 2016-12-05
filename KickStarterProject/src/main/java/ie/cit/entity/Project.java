@@ -26,7 +26,7 @@ public class Project {
 	@Id
 	@Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private long id;
 	
 	@Column(name = "name", nullable = false,length = 50)
 	private String name;

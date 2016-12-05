@@ -15,7 +15,7 @@ public class User {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 	
     @NotNull
     @Size(min=2, max=30, message = "Username size should be in the range [2...30]")
@@ -52,11 +52,11 @@ public class User {
 	}*/
 
 
-	public Long getId() {
+	public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -119,9 +119,17 @@ public class User {
 		this.projects = projects;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", creditLimit=" + creditLimit
+				+ "]";
+	}
+
 /*	public String getUserName() {
 		// TODO Auto-generated method stub
 		return username;
 	}*/
+	
+	
     
 }
