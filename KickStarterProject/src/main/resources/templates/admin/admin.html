@@ -12,20 +12,70 @@
 	<div id="main">
 		<div class="innerMain">
 			<h1>Admin</h1>
+			<div sec:authorize="hasAuthority('admin')">
+				This content is only shown to administrators.
+				
+			<div th:if="${param.closed}">
+					Project closed
+				</div>
 			
 			<table>
 			<h3>Open Projects</h3>
-				<tr th:each="projectOpen: ${project}">
+				<tr>
+	    			 <th>Project Name</th>
+	   				 <th>Description</th> 
+	   				 <th>Pledged</th>
+	   				 <th>Goal</th>
+	   				 <th>Close</th>
+	 			 </tr>
+				<tr th:each="projectOpen: ${projectOpen}">
 					<td>
-						<h3 th:text="${projectOpen.name}">Name</h3>
-						<p th:text="${projectOpen.description}">Description</p>
-						<p th:text="${projectOpen.getPledged()}">Pledged()</p>
-						<p th:text="${projectOpen.getGoalAmount()}">Goal Amount</p>
-						
-						[<a th:href="@{/project/close/__${proj.id}__}">close</a>]					
+						<span><b th:text="${projectOpen.getName()}">Name</b></span>
+					</td>
+					<td>	 
+						<span th:text="${projectOpen.description}">Description</span>
+					</td>
+					<td> 
+						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectOpen.getPledged())}">Pledged</span>
+					</td>
+					<td>	 
+						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectOpen.getGoalAmount())}">Goal</span>		
+					</td>
+					<td>
+						[<a th:href="@{/admin1/close/__${projectOpen.id}__}">close</a>]			
 					</td>
 				</tr>
 			</table>
+			
+			<table>
+			<h3>Closed Projects</h3>
+				<tr>
+	    			 <th>Project Name</th>
+	   				 <th>Description</th> 
+	   				 <th>Pledged</th>
+	   				 <th>Goal</th>
+	   				 <th>Close</th>
+	 			 </tr>
+				<tr th:each="projectClosed: ${projectClosed}">
+
+				<td>
+						<span><b th:text="${projectClosed.getName()}">Name</b></span>
+				</td>
+				<td>		 
+						<span th:text="${projectClosed.description}">Description</span>
+				</td>
+				<td>						   
+						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectClosed.getPledged())}">Pledged</span>
+				</td>
+				<td>						 
+						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectClosed.getGoalAmount())}">Goal</span>		
+				</td>
+				<td>	
+						[CLOSED]	
+				</td>
+				</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>

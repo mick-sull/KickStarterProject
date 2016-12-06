@@ -43,4 +43,8 @@ public class ProjectService {
 		projectRepository.delete(id);
 	}
 	
+	public List<Project> findByStatus (long status){
+		return projectRepository.findByStatus(status);
+	}
+	
 }
