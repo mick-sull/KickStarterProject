@@ -20,8 +20,9 @@ import ie.cit.service.CustomUserDetailsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
+	
 	 @Autowired
-	 CustomSuccessHandler customSuccessHandler;
+	 private CustomSuccessHandler customSuccessHandler;
 /*    @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -30,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http.authorizeRequests()
-		.antMatchers("/admin1/close/**")
+		.antMatchers("/admin/**")
 		.access("hasRole('admin')")
 /*		.antMatchers("/admin1/").hasRole("admin")
 		.antMatchers("/admin1/close/**").hasRole("admin")*/
