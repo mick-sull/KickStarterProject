@@ -1,6 +1,8 @@
 package ie.cit.service;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class PledgeService {
 		System.out.println("pledge project: " + project.getName());
 		
 		Calendar today = Calendar.getInstance();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		System.out.println(dateFormat.format(today.getTime()));
 		
 		pledge.setPledgeDate(today);
 		

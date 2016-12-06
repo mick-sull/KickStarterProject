@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="projects")
-public class Project {
+public class Project implements Comparable<Project>{
 	
 	@Id
 	@Column(name = "id", nullable = false)
@@ -32,7 +32,7 @@ public class Project {
 	@Column(name = "name", nullable = false,length = 50)
 	private String name;
 	
-	@Column(name = "description", nullable = false,length = 200)
+	@Column(name = "description", nullable = false, length = 2000)
 	private String description;
 	
 	@Column(name = "goalAmount", precision = 2)
@@ -47,7 +47,7 @@ public class Project {
 	List<Pledge> pledges; 
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat (pattern="yyyy-mm-dd")
+	@DateTimeFormat (pattern="yyyy-MM-dd")
 	private Calendar deadLine;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -199,6 +199,9 @@ public class Project {
 		this.imagePath = imagePath;
 	}
 	
-	
+	@Override
+	public int compareTo(Project otherProj) {
+	    return otherProj.getCreationDate().compareTo(this.getCreationDate());
+	}
 	
 }
