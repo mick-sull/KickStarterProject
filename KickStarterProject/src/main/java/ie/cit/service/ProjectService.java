@@ -45,6 +45,10 @@ public class ProjectService {
 		projectRepository.delete(id);
 	}
 	
+	public List<Project> findByStatus (long status){
+		return projectRepository.findByStatus(status);
+	}
+	
 	public List<Project> getLast3Projects(){
 		List<Project> projects = projectRepository.findAll();
 		Collections.sort(projects);

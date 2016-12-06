@@ -30,14 +30,26 @@ public class User {
     // amounts
     @Range(min=1, max=1000000)
     private float creditLimit; 
+    
+  /*  @NotNull
+	@Column(name = "role")
+	private String role;
 	
  //   private String passwordConfirm;
 	
-    @ManyToMany
+    public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}*/
+
+/*	@ManyToMany
     @JoinTable(name = "user_role", 
     	joinColumns = @JoinColumn(name = "user_id"), 
     	inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles;*/
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Pledge> pledges;
@@ -94,14 +106,14 @@ public class User {
         this.passwordConfirm = passwordConfirm;
     }
 */
-    public Set<Role> getRoles() {
+/*    public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    
+    */
     
     public List<Pledge> getPledges() {
         return pledges;

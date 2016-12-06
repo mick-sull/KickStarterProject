@@ -47,7 +47,7 @@ public class Project implements Comparable<Project>{
 	List<Pledge> pledges; 
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat (pattern="yyyy-mm-dd")
+	@DateTimeFormat (pattern="yyyy-MM-dd")
 	private Calendar deadLine;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -56,7 +56,18 @@ public class Project implements Comparable<Project>{
 	
 	private String imagePath;
 	
+	@Column(name = "status")
+	private long status;
 	
+	
+	public long getStatus() {
+		return status;
+	}
+
+	public void setStatus(long status) {
+		this.status = status;
+	}
+
 	public Project(){}
 	
 	public Project(String name, String description, float goalAmount){
