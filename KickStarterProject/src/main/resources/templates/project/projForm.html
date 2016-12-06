@@ -10,7 +10,7 @@
 		<div class="innerMain input_form">
 			<h2>Create New Project</h2>
 			<form class="newform" action="#" th:action="@{/project/newProj}"
-				th:object="${project}" method="post">
+				th:object="${project}" method="post" enctype="multipart/form-data">
 				<br />
 				<table >
 					<tr>
@@ -40,8 +40,8 @@
                 
                 	<tr>
 	                    <td>Image:</td>
-	                    <td><input type="file" th:field="*{imagePath}" /> <br/></td>
-	                    <td th:if="${#fields.hasErrors('imagePath')}" th:errors="*{imagePath}">Deadline</td>
+	                    <td><input type="file" name="projectImage" /> <br/></td>
+	                    
 	                </tr>
 
 					<tr>

@@ -72,10 +72,7 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 		Project proj = projectService.findById(id);
 
 		model.addAttribute("project", proj);
-		Calendar today = Calendar.getInstance();
-		Long milis = proj.getDeadLine().getTime().getTime() - today.getTime().getTime();
-		int days = (int)(milis/(1000*60*60*24));
-		model.addAttribute("daysToGo", days);
+		model.addAttribute("daysToGo", proj.getDaysToGo());
 
 		return "project/view";
 	}
@@ -124,6 +121,7 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 			
 			project.setOwner(userRepository.findByUsername(getPrincipal()));
 			project.setImagePath("../images/" + image.getOriginalFilename());
+			project.setStatus(1);
 			System.out.println("Image location:: " + project.getImagePath());
 
 			Calendar cal = Calendar.getInstance();

@@ -10,13 +10,6 @@
 	<div id="main">
 		<div class="innerMain input_form">
 
-			<div th:if="${param.error}">
-				<a th:href="@{/login}">Please Log In Before Pledging</a>
-			</div>
-
-			<div th:if="${param.errorCreditLimit}">
-				<a th:href="@{/login}">Please Log In Before Pledging</a>
-			</div>
 			<h1>Make a Pledge</h1>
 			<form class="newform"
 				th:action="@{/project/__${project.getId()}__/pledge/submit}"
@@ -29,16 +22,26 @@
 								Description</span></td>
 					</tr>
 					<tr>
-						
-							<td> <h3 sec:authorize="isAuthenticated()"><span>Credits
-									remaining: </span><span
-								th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(creditRemaining)}">Credit
-									Remaining</span></h3></td>
-						
+
+						<td>
+							<h3 sec:authorize="isAuthenticated()">
+								<span>Credits remaining: </span><span
+									th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(creditRemaining)}">Credit
+									Remaining</span>
+							</h3>
+						</td>
+
 					</tr>
 					<tr>
 						<td><input type="text" placeholder="Amount (€) " id="amount"
-							name="amount" autofocus="autofocus" /></td>
+							name="amount" autofocus="autofocus" />
+							
+								<b th:if="${param.error}">Please Log In Before Pledging</b>
+								<a class="button" th:if="${param.error}" th:href="@{/login}">Login</a>
+
+							
+								<b th:if="${param.errorCreditLimit}">You cannon pledge beyond your credit limit.</b>
+							</td>
 						<!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->
 					</tr>
 					<tr>

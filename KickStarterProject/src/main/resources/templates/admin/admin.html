@@ -13,19 +13,20 @@
 		<div class="innerMain">
 			<h1>Admin</h1>
 			<div sec:authorize="hasAuthority('admin')">
-				This content is only shown to administrators.
+				<p>This content is only shown to administrators.</p>
 				
 			<div th:if="${param.closed}">
-					Project closed
+					<p>Project Closed</p>
 				</div>
 			
-			<table>
+			<table class="table_view">
 			<h3>Open Projects</h3>
 				<tr>
 	    			 <th>Project Name</th>
 	   				 <th>Description</th> 
 	   				 <th>Pledged</th>
 	   				 <th>Goal</th>
+	   				 <th>Days to Go</th>
 	   				 <th>Close</th>
 	 			 </tr>
 				<tr th:each="projectOpen: ${projectOpen}">
@@ -42,12 +43,15 @@
 						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectOpen.getGoalAmount())}">Goal</span>		
 					</td>
 					<td>
-						[<a th:href="@{/admin1/close/__${projectOpen.id}__}">close</a>]			
+						<span th:text="${projectOpen.getDaysToGo()}">Days</span>
+					</td>
+					<td>
+						<a class="button" th:href="@{/admin1/close/__${projectOpen.id}__}">close</a>			
 					</td>
 				</tr>
 			</table>
 			
-			<table>
+			<table class="table_view">
 			<h3>Closed Projects</h3>
 				<tr>
 	    			 <th>Project Name</th>
