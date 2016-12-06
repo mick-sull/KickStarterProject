@@ -40,4 +40,11 @@ public class RoleService {
 		}*/
 		return false;
 	}
+	
+	public void addUserRole(User user){
+		Role role = new Role();
+		role.setRole("user");
+		role.setUserId(user.getId());
+		roleRepository.save(role);
+	}
 }

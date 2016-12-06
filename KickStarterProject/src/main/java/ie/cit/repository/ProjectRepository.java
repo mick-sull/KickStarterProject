@@ -39,6 +39,9 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 
 
 	public List<Project> findAll();
+	
+	@Query(value="SELECT * FROM projects WHERE status =?1", nativeQuery=true)
+	public List<Project> findBystatus(long value);//Project 1= open 0 = closed
 
 	
 }

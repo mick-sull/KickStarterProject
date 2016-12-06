@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Projects</title>
+    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body> 
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			<h1>Admin</h1>
+			<h2>Top 5 trending projects</h2>
+			<table>
+				<tr th:each="pled: ${pledge}">
+ 					<td th:text="${pled.getId()}">Id</td>
+					<td th:text="${pled.getUser().getUsername()}">User</td>
+					<!-- <span th:inline="text">€<td th:text="${pled.getAmount()}">Amount</td></span> -->
+					
+					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(pled.getAmount())}" />
+					
+					<td><a th:text="${pled.getProject().getName()}" th:href="@{/project/__${pled.getProject().getId()}__}"></a></td>
+				</tr>
+			</table>
+	
+		</div>
+		</div>
+</body>
+</html>
