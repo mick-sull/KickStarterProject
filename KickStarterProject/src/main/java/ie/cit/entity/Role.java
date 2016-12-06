@@ -43,7 +43,7 @@ public class Role {
 	}
 
 	public String getName() {
-		// TODO Auto-generated method stub
 		return role;
 	}
+	
 }
