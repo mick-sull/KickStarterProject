@@ -19,6 +19,7 @@ import ie.cit.entity.Pledge;
 import ie.cit.entity.Project;
 import ie.cit.entity.Role;
 import ie.cit.repository.PledgeRepository;
+import ie.cit.service.ProjectService;
 import ie.cit.repository.RoleRepository;
 
 
@@ -37,6 +38,9 @@ public class HomeController extends WebMvcConfigurerAdapter {
 	
 	@Autowired
 	PledgeRepository pledgedRepository;
+	
+	@Autowired
+	ProjectService projectService;
 	
 /*	
 	@Autowired
@@ -61,6 +65,14 @@ public class HomeController extends WebMvcConfigurerAdapter {
 		for(int i = 0; i < pledges.size(); i++ ){
 			System.out.println("Pledges ID " + pledges.get(i).getId() + " Username " + pledges.get(i).getUser().getUsername() + " Username " + pledges.get(i).getProject().getName() );
 		}
+		
+		List<Project> proj = projectService.getLast3Projects();
+		for(Project project:proj){
+			String desc = project.getDescription();
+			project.setDescription(desc.substring(0, Math.min(desc.length(), 300))+"...");
+		}
+		
+		model.addAttribute("project", proj);
 		
 		return "/list";
 	}

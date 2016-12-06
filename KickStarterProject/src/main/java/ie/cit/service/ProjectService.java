@@ -1,5 +1,7 @@
 package ie.cit.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,19 @@ public class ProjectService {
 	
 	public List<Project> findByStatus (long status){
 		return projectRepository.findByStatus(status);
+	}
+	
+	public List<Project> getLast3Projects(){
+		List<Project> projects = projectRepository.findAll();
+		Collections.sort(projects);
+		if(projects.size()<3){
+			return projects;
+		}
+		List<Project> last3 = new ArrayList<Project>();
+		for(int i=0;i<3;i++){
+			last3.add(projects.get(i));		
+		}
+		return last3;
 	}
 	
 }
