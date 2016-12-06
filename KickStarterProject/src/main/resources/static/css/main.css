@@ -4,6 +4,11 @@ body {
 	background: #d7dfe0;
 }
 
+p{
+	font-size: 10pt;
+	line-height: 110%;
+}
+
 #header {
 	background: #b1d7dd;
 	color: white;
