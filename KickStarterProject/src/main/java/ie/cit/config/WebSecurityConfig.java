@@ -20,7 +20,8 @@ import ie.cit.service.CustomUserDetailsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private CustomUserDetailsService customUserDetailsService;
-
+	 @Autowired
+	 CustomSuccessHandler customSuccessHandler;
 /*    @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -29,8 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http.authorizeRequests()
-		.antMatchers("/admin/**")
-		.access("hasRole('ADMIN')")
+		.antMatchers("/admin1/close/**")
+		.access("hasRole('admin')")
+/*		.antMatchers("/admin1/").hasRole("admin")
+		.antMatchers("/admin1/close/**").hasRole("admin")*/
 		.and()
 		.formLogin()
 			.loginPage("/login")
@@ -38,7 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.failureUrl("/login?error")
 			.usernameParameter("username")
 			.passwordParameter("password")
-			.defaultSuccessUrl("/user/profile")
+			//.defaultSuccessUrl("/user/profile")
+			.successHandler(customSuccessHandler)
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/home_logout")).logoutSuccessUrl("/logout")
 			

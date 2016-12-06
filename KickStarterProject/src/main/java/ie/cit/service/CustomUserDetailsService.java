@@ -21,6 +21,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	private UserService userService;
 	private HttpServletRequest request;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 
 	@Autowired
 	public CustomUserDetailsService(UserService userService) {
@@ -40,7 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			System.out.println("CustomUserDetailsService  found user: " + username);
 		   	//request.getSession().setAttribute("username", username);
 		}
-		SecurityUser sUser= new SecurityUser(user);
+		SecurityUser sUser= new SecurityUser(user, roleRepository);
 		return sUser;
 		
 	}

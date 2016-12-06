@@ -56,7 +56,18 @@ public class Project {
 	
 	private String imagePath;
 	
+	@Column(name = "status")
+	private long status;
 	
+	
+	public long getStatus() {
+		return status;
+	}
+
+	public void setStatus(long status) {
+		this.status = status;
+	}
+
 	public Project(){}
 	
 	public Project(String name, String description, float goalAmount){

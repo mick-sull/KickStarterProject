@@ -36,6 +36,7 @@ import ie.cit.repository.UserRepository;
 import ie.cit.service.CustomUserDetails;
 import ie.cit.service.PledgeService;
 import ie.cit.service.ProjectService;
+import ie.cit.service.RoleService;
 import ie.cit.service.UserService;
 
 @Controller
@@ -56,6 +57,9 @@ public class UserController extends WebMvcConfigurerAdapter{
 	
 	@Autowired
 	PledgeService pledgeService;
+	
+	@Autowired
+	RoleService roleService;
 	
 	private final String LOGIN_PAGE = "login";
 	
@@ -107,7 +111,9 @@ public class UserController extends WebMvcConfigurerAdapter{
            return "redirect:/user/register?error";
        }
        else{
+    	   
     	   userService.add(user);
+    	   roleService.addUserRole(user);
     	   return "redirect:/login";
        }
    }
