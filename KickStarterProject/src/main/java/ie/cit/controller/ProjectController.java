@@ -89,14 +89,6 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 		}		
 	}
 
-		Project proj = projectService.findById(id);
-
-		model.addAttribute("project", proj);
-		model.addAttribute("daysToGo", proj.getDaysToGo());
-
-		return "project/edit";
-	}*/
-
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String view(Model model, @PathVariable("id") long id) {
