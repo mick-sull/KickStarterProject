@@ -30,7 +30,7 @@ public class RoleRepositoryTest {
 	public void save(){
 		
 		Role role = roleRepository.findById(1);
-		role.setName("TestName");
+		//role.setName("TestName");
 		Role role2 = roleRepository.save(role);
 		assertNotNull(role2);
 	}
