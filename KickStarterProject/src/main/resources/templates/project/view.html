@@ -64,9 +64,18 @@
 				</table>
 			</div>
 
-			<a sec:authorize="isAuthenticated()" class="button right"
-				th:href="@{/project/__${project.getId()}__/pledge/}">Back This
-				Project</a>
+				
+			<div th:if="${project.status == 1}">
+				<a sec:authorize="isAuthenticated()" class="button right"
+				th:href="@{/project/__${project.getId()}__/pledge/}">Back This Project</a>
+			</div>
+			
+			<div th:if="${project.status == 0}">
+				<a sec:authorize="isAuthenticated()" class="button right disabled"
+				th:href="@{#}">Project Closed</a>
+			</div>
+				
+
 
 		</div>
 	</div>

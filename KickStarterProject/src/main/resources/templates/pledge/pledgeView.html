@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Pledge</title>
-    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+	<link href="/../../../css/main.css" th:href="@{/../../../css/main.css}" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body> 
-
-	<div class="login-page">
-			<div class="form">
+	<div th:include="fragments/header :: header"></div>
+	<div class="innerMain">
+		<div class="form">
 					<div th:if="${param.error}">
 					 <a th:href="@{/login}">Please Log In Before Pledging</a>
 				</div>
@@ -19,16 +19,16 @@
 				
 				<table>
 						<tr>
-						<td>Description: <span th:text="${project.description}">Project Description</span></td>
+						<td><b>Description:</b> <span th:text="${project.description}">Project Description</span></td>
 						</tr>
 						<tr>
-						<h3><td sec:authorize="isAuthenticated()"> <span>Credits remaining: </span><span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(creditRemaining)}">Credit Remaining</span></td></h3>
+						<h3><td sec:authorize="isAuthenticated()"> <span><b>Credits remaining:</b> </span><span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(creditRemaining)}">Credit Remaining</span></td></h3>
 						</tr>
 				</table>
 				<form th:action="@{/project/__${project.getId()}__/pledge/submit}"  th:object="${Pledge}" method="POST">
 				  <input type="text"  placeholder="Amount (€) " id="amount" name="amount" autofocus="autofocus" /> <br />
 				   <!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->
-				  <input type="submit" value="Pledge"/>
+				  <td><button type="submit">Pledge</button></td>
 				  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
 			  </div>
