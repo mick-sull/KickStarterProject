@@ -5,9 +5,10 @@
 	<link href="../css/main.css" th:href="@{../css/main.css}" rel="stylesheet" type="text/css" media="screen" />
   </head>
   <body>
-
-	<div class="login-page">
-		<div class="form">
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			<div class="form">
 			<h1>Sign Up</h1>
 				<div th:if="${param.error}">
 				Incomplete information
@@ -20,11 +21,12 @@
 			  <input type="password"  placeholder="password" id="password" name="password" /> <br />
 			  <input type="text"  placeholder="credit limit" id="creditLimit" name="creditLimit" /> <br />
 			   <!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->
-			  <input type="submit" value="Sign up"/>
+			  <button type="submit">Submit</button>
 			  <p class="message">Registered? <a href="/user/login">Sign in!</a></p>
 			  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
   </div>
+</div>
 </div>
   </body>
 </html>
