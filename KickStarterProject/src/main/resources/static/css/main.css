@@ -319,8 +319,20 @@ p{
 	margin-right:20px;
 }
 
-.disabled {
-	background: #7e95ba;
+.disabledButton{
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px;
+	background: #FF2727;
+	color: white;
+	margin: 10px;
+	margin-left: 15px;
+	font-weight: bold;
+	float: right;
+	
+}
+.disabledButton:hover{
+	background: #FF2727;
 }
 
 .pledges_list {
