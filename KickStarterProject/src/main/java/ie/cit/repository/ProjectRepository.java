@@ -27,7 +27,7 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 	//public Project findByIdNative(@Param("id") int id);
 	
 
-	
+	public List<Project> findByNameContainsIgnoreCase(String name);
 	
 	// update method  (Save a Project Object)
 	
