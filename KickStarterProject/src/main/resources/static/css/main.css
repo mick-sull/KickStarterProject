@@ -4,6 +4,11 @@ body {
 	background: #d7dfe0;
 }
 
+p{
+	font-size: 10pt;
+	line-height: 110%;
+}
+
 #header {
 	background: #b1d7dd;
 	color: white;
@@ -232,18 +237,11 @@ body {
 	text-align: center;
 }
 
-.trending table{
-	background: #e8eef7;
-	padding: 0px;
-	margin: 20px;
-}
-
 .trending th{
-	padding:5px;
+	
 	padding-top:10px;
 	width:300px;
-	background: #306f7a;
-	color: white;
+	
 }
 
 .trending th:last-child {
@@ -254,10 +252,21 @@ body {
 	padding:3px;
 }
 
-.trending tr:nth-child(even){
-	background: #e1e3ef;
+.table_view {
+	background: #e8eef7;
+	padding: 0px;
+	margin: 20px;
 }
 
+.table_view th{
+	padding:5px;
+	background: #306f7a;
+	color: white;
+}
+
+.table_view tr:nth-child(even){
+	background: #e1e3ef;
+}
 
 .proj_view td{
 	min-width: 100px;
@@ -297,6 +306,7 @@ body {
 	background: #42649b;
 	color: white;
 	margin: 10px;
+	margin-left: 15px;
 	font-weight: bold;
 }
 
@@ -306,6 +316,7 @@ body {
 
 .right {
 	float: right;
+	margin-right:20px;
 }
 
 .disabled {
@@ -321,3 +332,31 @@ body {
 	max-height: 60px
 }
 
+.newform {
+	background: #e8eef7;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 30px 10px;
+	border-radius: 25px;
+}
+
+.newform tbody{
+	padding-top: 20px;
+}
+
+.newform td{
+	min-width: 100px;
+	padding: 5px;
+}
+
+.newform input {
+	min-width: 419px;
+}
+
+.input_form {
+	
+}
+
+.input_form h2, .input_form h1{
+	margin-left: 30px;
+}
