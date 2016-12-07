@@ -19,6 +19,7 @@ import ie.cit.entity.Pledge;
 import ie.cit.entity.Project;
 import ie.cit.entity.Role;
 import ie.cit.repository.PledgeRepository;
+import ie.cit.service.PledgeService;
 import ie.cit.service.ProjectService;
 import ie.cit.repository.RoleRepository;
 
@@ -37,7 +38,7 @@ public class HomeController extends WebMvcConfigurerAdapter {
 	
 	
 	@Autowired
-	PledgeRepository pledgedRepository;
+	PledgeService pledgeService;
 	
 	@Autowired
 	ProjectService projectService;
@@ -57,8 +58,8 @@ public class HomeController extends WebMvcConfigurerAdapter {
 /*	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {*/
 	@RequestMapping("/")
-	public String list(Model model) {	
-		Iterable<Pledge> a= pledgedRepository.findFirst5ByOrderByPledgeDateDesc();
+	public String home(Model model) {	
+		Iterable<Pledge> a= pledgeService.findFirst5ByOrderByPledgeDateDesc();
 		List<Pledge> pledges = new ArrayList<Pledge>();
 		a.forEach(pledges::add);
 		model.addAttribute("pledge", pledges);
@@ -74,7 +75,7 @@ public class HomeController extends WebMvcConfigurerAdapter {
 		
 		model.addAttribute("project", proj);
 		
-		return "/list";
+		return "/home";
 	}
 	
 	@RequestMapping("/logout")
