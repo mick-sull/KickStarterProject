@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import ie.cit.entity.Pledge;
 import ie.cit.entity.Project;
 
 @Repository
@@ -28,6 +29,8 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 	
 
 	public List<Project> findByNameContainsIgnoreCase(String name);
+	public List<Project> findFirst3ByOrderByCreationDateDesc();
+	public List<Project> findAllByOrderByCreationDate();
 	
 	// update method  (Save a Project Object)
 	
