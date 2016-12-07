@@ -1,83 +1,89 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org">
 <head>
-    <title>Home Title</title>
-    <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
-    
+<title>Home Title</title>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+
 </head>
 <body>
 
-	<div  th:include="fragments/header :: header"></div>
-	
+	<div th:include="fragments/header :: header"></div>
+
 	<div id="main">
 		<div class="innerMain">
 			<h1>Admin</h1>
 			<div sec:authorize="hasAuthority('admin')">
 				<p>This content is only shown to administrators.</p>
-				
-			<div th:if="${param.closed}">
+
+				<div th:if="${param.closed}">
 					<p>Project Closed</p>
 				</div>
-			
-			<table class="table_view">
-			<h3>Open Projects</h3>
-				<tr>
-	    			 <th>Project Name</th>
-	   				 <th>Description</th> 
-	   				 <th>Pledged</th>
-	   				 <th>Goal</th>
-	   				 <th>Days to Go</th>
-	   				 <th>Close</th>
-	 			 </tr>
-				<tr th:each="projectOpen: ${projectOpen}">
-					<td>
-						<span><b th:text="${projectOpen.getName()}">Name</b></span>
-					</td>
-					<td>	 
-						<span th:text="${projectOpen.description}">Description</span>
-					</td>
-					<td> 
-						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectOpen.getPledged())}">Pledged</span>
-					</td>
-					<td>	 
-						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectOpen.getGoalAmount())}">Goal</span>		
-					</td>
-					<td>
-						<span th:text="${projectOpen.getDaysToGo()}">Days</span>
-					</td>
-					<td>
-						<a class="button" th:href="@{/admin1/close/__${projectOpen.id}__}">close</a>			
-					</td>
-				</tr>
-			</table>
-			
-			<table class="table_view">
-			<h3>Closed Projects</h3>
-				<tr>
-	    			 <th>Project Name</th>
-	   				 <th>Description</th> 
-	   				 <th>Pledged</th>
-	   				 <th>Goal</th>
-	   				 <th>Close</th>
-	 			 </tr>
-				<tr th:each="projectClosed: ${projectClosed}">
+				<div th:if="${param.none}">
+					<p>No Projects have Goal made</p>
+				</div>
+				<div th:if="${param.closedAll}">
+					<p>All Projects with Goal Made have been Closed</p>
+				</div>
+				<ul class="admin_menu right">
+					<li><a th:href="@{/admin1/endDate}">Sort By End Date</a></li>
+					<li><a th:href="@{/admin1/goal}">Sort By Goal%</a></li>
+					<li><a th:href="@{/admin1/closeAll}">Close All Goal Made</a></li>
+				</ul>
+				<h3>Open Projects</h3>
+				<table class="table_view">
 
-				<td>
-						<span><b th:text="${projectClosed.getName()}">Name</b></span>
-				</td>
-				<td>		 
-						<span th:text="${projectClosed.description}">Description</span>
-				</td>
-				<td>						   
-						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectClosed.getPledged())}">Pledged</span>
-				</td>
-				<td>						 
-						 <span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectClosed.getGoalAmount())}">Goal</span>		
-				</td>
-				<td>	
-						[CLOSED]	
-				</td>
-				</tr>
+
+					<tr>
+						<th>Project Name</th>
+						<th>Description</th>
+						<th>Pledged</th>
+						<th>Goal</th>
+						<th>Days to Go</th>
+						<th>Close</th>
+					</tr>
+					<tr th:each="projectOpen: ${projectOpen}">
+						<td><span><b th:text="${projectOpen.getName()}">Name</b></span>
+						</td>
+						<td><span th:text="${projectOpen.description}">Description</span>
+						</td>
+						<td><span
+							th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectOpen.getPledged())}">Pledged</span>
+						</td>
+						<td><span
+							th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectOpen.getGoalAmount())}">Goal</span>
+						</td>
+						<td><span th:text="${projectOpen.getDaysToGo()}">Days</span>
+						</td>
+						<td><a class="button"
+							th:href="@{/admin1/close/__${projectOpen.id}__}">close</a></td>
+					</tr>
+				</table>
+				
+				<h3>Closed Projects</h3>
+				<table class="table_view">
+					
+					<tr>
+						<th>Project Name</th>
+						<th>Description</th>
+						<th>Pledged</th>
+						<th>Goal</th>
+						<th>Close</th>
+					</tr>
+					<tr th:each="projectClosed: ${projectClosed}">
+
+						<td><span><b th:text="${projectClosed.getName()}">Name</b></span>
+						</td>
+						<td><span th:text="${projectClosed.description}">Description</span>
+						</td>
+						<td><span
+							th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectClosed.getPledged())}">Pledged</span>
+						</td>
+						<td><span
+							th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(projectClosed.getGoalAmount())}">Goal</span>
+						</td>
+						<td>[CLOSED]</td>
+					</tr>
 				</table>
 			</div>
 		</div>

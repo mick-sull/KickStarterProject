@@ -168,7 +168,7 @@ public class Project implements Comparable<Project>{
 	}
 	
 	public double getBalance(){
-		double balance = goalAmount - getBalance();
+		double balance = goalAmount - getPledged();
 		return balance;
 	}
 
@@ -217,9 +217,17 @@ public class Project implements Comparable<Project>{
 		this.imagePath = imagePath;
 	}
 	
+	public Double getSortPercent(){
+		double pledged = 0;
+		for(Pledge pledge:pledges){
+			pledged+=pledge.getAmount();
+		}
+		return (pledged/this.getGoalAmount())*100;
+	}
+	
 	@Override
 	public int compareTo(Project otherProj) {
-	    return otherProj.getCreationDate().compareTo(this.getCreationDate());
+	    return otherProj.getSortPercent().compareTo(this.getSortPercent());
 	}
 	
 }
