@@ -22,6 +22,7 @@
 						<p th:text="${proj.description}">Description</p>
 						
 						<a class="button" th:href="@{/project/__${proj.id}__}">view</a>
+						<a class="button" th:href="@{/project/editProj/__${proj.id}__}">Edit</a>
 						
 					</div></td>
 					<!-- <td th:text="${proj.id}">Id</td>

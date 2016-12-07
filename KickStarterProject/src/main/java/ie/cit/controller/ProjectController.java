@@ -54,6 +54,7 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/projCreated").setViewName("projCreated");
+		//registry.addViewController("/editProj").setViewName("editProj");
 	}
 
 	@RequestMapping("/")
@@ -66,6 +67,18 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 
 		return "project/list";
 	}
+	
+/*	@RequestMapping(value = "/editProj/{id}", method = RequestMethod.GET)
+	public String viewEdit1(Model model, @PathVariable("id") long id) {
+
+		Project proj = projectService.findById(id);
+
+		model.addAttribute("project", proj);
+		model.addAttribute("daysToGo", proj.getDaysToGo());
+
+		return "project/edit";
+	}*/
+
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String view(Model model, @PathVariable("id") long id) {
@@ -86,7 +99,37 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 	public String showProjForm(Project project) {
 		return "project/projForm";
 	}
+	
+	
+	@GetMapping("/editProj/{id}")
+	public String editProj(Model model, @PathVariable("id") long id)
+	{
+		Project proj = projectService.findById(id);
+		model.addAttribute("proj", proj);
+		model.addAttribute("projId", proj.getId());
+		return "project/edit";
+	}
+	
+	
+	@PostMapping(value = "/editProj/{id}")
+	public String updateProject(@PathVariable("id") long id, /*@Valid */Project proj, BindingResult bindingResult) {
+		
+		Project project = projectService.findById(id);
+		
+		project.setDescription(proj.getDescription());
+		//@RequestParam("description") String description;
+		//proj.setDescription(description);
+		
+		projectService.save(project);
+		System.out.println("Description Updated?");
+		return "redirect:/user/profile";
+	}
 
+	
+	
+	
+	
+	
 	@PostMapping("/newProj")
 	public String checkProjectInfo(@RequestParam("projectImage") MultipartFile image, @Valid Project project, BindingResult bindingResult) {
 
