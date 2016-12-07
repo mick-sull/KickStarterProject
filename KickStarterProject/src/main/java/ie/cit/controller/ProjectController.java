@@ -149,8 +149,8 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 			Calendar cal = Calendar.getInstance();
 			project.setCreationDate(cal);
 
-			projectService.save(project);
-			return "redirect:/project/projCreated";
+			Project pCreated = projectService.save(project);
+			return "redirect:/project/" + pCreated.getId() + "?ProjectCreated";
 		}
 	}
 
