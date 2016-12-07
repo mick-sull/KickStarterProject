@@ -122,13 +122,11 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 	
 	
 	@PostMapping(value = "/editProj/{id}")
-	public String updateProject(@PathVariable("id") long id, /*@Valid */Project proj, BindingResult bindingResult) {
+	public String updateProject(@PathVariable("id") long id, @Valid Project proj, BindingResult bindingResult) {
 		
 		Project project = projectService.findById(id);
 		
 		project.setDescription(proj.getDescription());
-		//@RequestParam("description") String description;
-		//proj.setDescription(description);
 		
 		projectService.save(project);
 		System.out.println("Description Updated?");
