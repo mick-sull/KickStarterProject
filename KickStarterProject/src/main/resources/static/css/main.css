@@ -2,11 +2,11 @@
 
 body {
 	background: #d7dfe0;
+	font-family: arial, sans-serif;
 }
 
 p{
-	font-size: 10pt;
-	line-height: 110%;
+	font-size: 0.9em;
 }
 
 #header {
@@ -379,3 +379,30 @@ p{
 	padding: 10px;
 	margin-top: 70px;
 }
+
+.admin_menu {   
+    list-style: none; 
+    margin: 0;
+    margin-right: 20px;
+    padding: 0;  
+    height: 30px; 
+}  
+.admin_menu li {  
+    float: left;  
+    height: 30px;  
+    line-height: 30px;
+    background: #5273a8;
+    margin: 2px;
+}  
+.admin_menu li a {  
+    display: block;  
+    padding: 0 20px;  
+    color: white;  
+    text-decoration: none;  
+}  
+.admin_menu li a:hover {  
+    background-color: #7ea5e5;  
+    text-decoration: none;  
+}  
+
+
