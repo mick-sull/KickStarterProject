@@ -11,7 +11,7 @@
 			<h1>User profile</h1>
 			<p th:text="${username}">username</p>
 
-
+			<a class="button right" th:href="@{/user/newProj}">New Project</a>
 			<h3>My Projects</h3>
 			
 			<table>
@@ -21,7 +21,7 @@
 						<h3 th:text="${proj.name}">Name</h3>
 						<p th:text="${proj.description}">Description</p>
 						
-						[<a th:href="@{/project/__${proj.id}__}">view</a>]
+						<a class="button" th:href="@{/project/__${proj.id}__}">view</a>
 						
 					</div></td>
 					<!-- <td th:text="${proj.id}">Id</td>
@@ -32,7 +32,7 @@
 
 			
 
-			<a th:href="@{/user/newProj}">New Project</a>
+			
 
 
 			<!--
@@ -58,7 +58,7 @@
 
 			<h3>My Pledges</h3>			
 
-			<table>
+			<table class="table_view">
 				<tr>
 					<th>Project Name</th>
 					<th>Project Description</th>
@@ -75,7 +75,7 @@
 					<td th:text="${pledge.project.getDateString(pledge.project.getDeadLine())}">Project End Date</td>
 					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(pledge.amount)}">Amount Pledged</td>
 					<td th:text="${pledge.getPledgeDateString()}">Date of pledge</td>
-					<td><a th:href="@{/user/cancelpledge/__${pledge.id}__}"><span>Cancel</span></a></td>
+					<td><a class="button" th:href="@{/user/cancelpledge/__${pledge.id}__}"><span>Cancel</span></a></td>
 					<!--</div></td>-->
 				</tr>
 			</table>

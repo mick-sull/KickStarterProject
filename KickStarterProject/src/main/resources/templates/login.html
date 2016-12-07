@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Login page</title>
+    <title>Login Page</title>
 	<link href="../css/main.css" th:href="@{../css/main.css}" rel="stylesheet" type="text/css" media="screen" />
   </head>
   <body>
-
-	<div class="login-page">
-		<div class="form">
-			<h1>Login page</h1>
-				<div th:if="${param.error}">
+	<div  th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain">
+			<div class="form">
+			<h1>Login Page</h1>
+				<div th:if="${param.error}" class = "message">		
 				Invalid username and password.
 			</div>
 			<div th:if="${param.logout}">
@@ -18,12 +19,13 @@
 			<form th:action="@{/login}" method="POST">
 			  <input type="text"  placeholder="username" id="username" name="username" autofocus="autofocus" /> <br />
 			  <input type="password"  placeholder="password" id="password" name="password" /> <br />
-			  <input type="submit" value="Log in" />
+			  <td><button type="submit">Submit</button></td>
 			  <p class="message">Not registered? <a href="/user/register">Create an account</a></p>
 			  						<input
 				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
-  </div>
-</div>
+		</div>
+	</div>
+	</div>
   </body>
 </html>

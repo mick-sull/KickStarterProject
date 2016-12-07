@@ -30,7 +30,7 @@ public class RoleRepositoryTest {
 	public void save(){
 		
 		Role role = roleRepository.findById(1);
-		//role.setName("TestName");
+		role.setRole("TestName");
 		Role role2 = roleRepository.save(role);
 		assertNotNull(role2);
 	}
@@ -38,9 +38,10 @@ public class RoleRepositoryTest {
 	@Test
 	@Transactional
 	public void delete(){
-		roleRepository.delete(new Long(1));
+		int size = roleRepository.findAll().size()-1;
+		roleRepository.delete(new Long(2));
 		List<Role> roles = roleRepository.findAll();
-		assertEquals(3, roles.size());
+		assertEquals(size, roles.size());
 		Role role = roleRepository.findById(2);
 		assertNull(role);
 	}

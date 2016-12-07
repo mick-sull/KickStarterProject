@@ -2,15 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>New Project</title>
+	<link href="/../../../css/main.css" th:href="@{/../../../css/main.css}" rel="stylesheet" type="text/css" media="screen" />
 <!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
 <body>
 	<div th:include="fragments/header :: header"></div>
 	<div id="main">
-		<div class="innerMain">
-			<form action="#" th:action="@{/project/newProj}"
+		<div class="innerMain input_form">
+			<h2>Create New Project</h2>
+			<form class="newform" action="#" th:action="@{/project/newProj}"
 				th:object="${project}" method="post" enctype="multipart/form-data">
-				<table>
+				<br />
+				<table >
 					<tr>
 						<td>Name:</td>
 						<td><input type="text" th:field="*{name}" /></td>
@@ -19,7 +22,7 @@
 					</tr>
 					<tr>
 						<td>Description:</td>
-						<td><input type="text" th:field="*{description}" /></td>
+						<td><textarea th:field="*{description}" rows="5" cols="50"/></td>
 						<td th:if="${#fields.hasErrors('description')}"
 							th:errors="*{description}">Description Error</td>
 					</tr>
@@ -37,14 +40,16 @@
 	                </tr> 
                 
                 	<tr>
-	                    <td>Deadline:</td>
+	                    <td>Image:</td>
 	                    <td><input type="file" name="projectImage" /> <br/></td>
+	                    
 	                </tr>
 
 					<tr>
-						<td><button type="submit">Submit</button></td>
+						<td><button type="submit">Create</button></td>
 					</tr>
-				</table>
+				</table> 
+				<br />
 			</form>
 		</div>
 	</div>

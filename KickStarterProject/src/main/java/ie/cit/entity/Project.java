@@ -16,6 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,12 +33,16 @@ public class Project implements Comparable<Project>{
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(name = "name", nullable = false,length = 50)
+	@Size(min=2, max=50)
+	@Column(name = "name", nullable = false, length = 50)
 	private String name;
 	
+	@Size(min=20, max=2000)
 	@Column(name = "description", nullable = false, length = 2000)
 	private String description;
 	
+	@Max(1000000)
+	@Min(100)
 	@Column(name = "goalAmount", precision = 2)
 	private float goalAmount;
 	
@@ -46,6 +54,7 @@ public class Project implements Comparable<Project>{
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	List<Pledge> pledges; 
 	
+	@Future
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat (pattern="yyyy-MM-dd")
 	private Calendar deadLine;
@@ -189,6 +198,13 @@ public class Project implements Comparable<Project>{
 		SimpleDateFormat formatter=new SimpleDateFormat("dd-MMM-yyyy");
 		date = formatter.format(calander.getTime());
 		return date;
+	}
+	
+	public int getDaysToGo(){
+		Calendar today = Calendar.getInstance();
+		Long milis = this.getDeadLine().getTime().getTime() - today.getTime().getTime();
+		int days = (int)(milis/(1000*60*60*24));
+		return days;
 	}
 
 	public String getImagePath() {
