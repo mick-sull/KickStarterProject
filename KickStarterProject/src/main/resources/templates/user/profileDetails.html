@@ -75,8 +75,25 @@
 					<td th:text="${pledge.project.getDateString(pledge.project.getDeadLine())}">Project End Date</td>
 					<td th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(pledge.amount)}">Amount Pledged</td>
 					<td th:text="${pledge.getPledgeDateString()}">Date of pledge</td>
-					<td><a class="button" th:href="@{/user/cancelpledge/__${pledge.id}__}"><span>Cancel</span></a></td>
-					<!--</div></td>-->
+					
+					<div th:if="${pledge.project.status == 0 and pledge.project.goalAmount > pledge.project.getPledged()}">
+						<td><a class="button" th:href="@{/user/cancelpledge/__${pledge.id}__}"><span>Cancel</span></a></td>
+					</div>
+					<!--<div th:if="${pledge.project.getPledged() >= 0}">
+						<td><a th:text="Goal Reached"></a></td>
+					</div>-->
+					<div th:if="${pledge.project.status == 1}">
+						<td><a th:text="Closed"></a></td>
+					</div>
+					
+
+					<!--
+					<div th:switch="${pledge.project.status}"> 
+					  	<td><a th:case="#{pledge.project.status == 0}" class="button" th:href="@{/user/cancelpledge/__${pledge.id}__}"><span>Cancel</span></a></td>
+						<td><a th:case="#{pledge.project.status == 1}" th:text="Closed"></a></td>
+
+					</div>
+					</div></td>-->
 				</tr>
 			</table>
 
