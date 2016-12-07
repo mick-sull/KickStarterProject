@@ -13,7 +13,11 @@
 			<div th:if="${param.pledgeSuccessful}">
 				<h2>Pledge was successfully Made!</h2>
 			</div>
-
+			
+			<div th:if="${param.ProjectCreated}">
+				<h2>Project Successfully Created!</h2>
+			</div>
+			
 			<div class="proj_view_details">
 				<table class="proj_view">
 					<tr>
@@ -31,11 +35,11 @@
 					</tr>
 					<tr>
 						<td>Goal</td>
-						<td><span th:text="${project.goalAmount}">Goal Amount</span></td>
+						<td><span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(project.goalAmount)}">Goal Amount</span></td>
 					</tr>
 					<tr>
 						<td>Pledged</td>
-						<td><span th:text="${project.getPledged()}">Pledged
+						<td><span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(project.getPledged())}">Pledged
 								Amount</span></td>
 					</tr>
 					<tr>
