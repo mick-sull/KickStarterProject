@@ -256,6 +256,7 @@ p{
 	background: #e8eef7;
 	padding: 0px;
 	margin: 20px;
+	width: 95%;
 }
 
 .table_view th{
@@ -371,4 +372,10 @@ p{
 
 .input_form h2, .input_form h1{
 	margin-left: 30px;
+}
+
+.searchBar{
+	float: right;
+	padding: 10px;
+	margin-top: 70px;
 }

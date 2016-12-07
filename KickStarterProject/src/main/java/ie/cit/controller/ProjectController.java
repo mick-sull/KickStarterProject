@@ -68,16 +68,26 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 		return "project/list";
 	}
 	
-/*	@RequestMapping(value = "/editProj/{id}", method = RequestMethod.GET)
-	public String viewEdit1(Model model, @PathVariable("id") long id) {
-
-		Project proj = projectService.findById(id);
-
-		model.addAttribute("project", proj);
-		model.addAttribute("daysToGo", proj.getDaysToGo());
-
-		return "project/edit";
-	}*/
+	@GetMapping("/search")
+	public String searchProject(Project project) {
+		return "project/list";
+	}
+	
+	@PostMapping(value = "/search")
+	public String search(Project project, BindingResult bindingResult, Model model){	
+		
+		System.out.println("SEARCH PROJECT: " + project.getName());
+		Iterable<Project> a= projectService.findByNameContainsIgnoreCase(project.getName());
+		List<Project> projects = new ArrayList<Project>();
+		a.forEach(projects::add);
+		if(projects.isEmpty()){
+			return "redirect:/project/?NoProjectFound";
+		}
+		else{
+			model.addAttribute("project", projects);	
+			return "project/list";
+		}		
+	}
 
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -171,8 +181,8 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 			Calendar cal = Calendar.getInstance();
 			project.setCreationDate(cal);
 
-			projectService.save(project);
-			return "redirect:/project/projCreated";
+			Project pCreated = projectService.save(project);
+			return "redirect:/project/" + pCreated.getId() + "?ProjectCreated";
 		}
 	}
 

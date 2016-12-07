@@ -6,7 +6,6 @@
 </head>
 <body> 
 	<div th:include="fragments/header :: header"></div>
-	<div id="main">
 		
 		<div class="innerMain">
 			<a sec:authorize="isAuthenticated()" class="button right" th:href="@{/user/newProj}">Create New Project</a>
@@ -19,6 +18,11 @@
 		<div th:if="${param.pledgeUnsuccessful}">
 			<h2>Error: Cant pledge to own project!</h2>
 		</div>
+		
+		<div th:if="${param.NoProjectFound}">
+			<h2>No results found!</h2>
+		</div>
+
 
 			
 			<table>
@@ -37,6 +41,6 @@
 				</tr>
 			</table>
 		</div>
-	</div>
+	
 </body>
 </html>

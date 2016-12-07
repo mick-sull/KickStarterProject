@@ -66,7 +66,9 @@ public class Project implements Comparable<Project>{
 	private String imagePath;
 	
 	@Column(name = "status")
-	private long status;
+	private long status; 
+	// 0 = the project is closed
+	// 1 = the project is open
 	
 	
 	public long getStatus() {
