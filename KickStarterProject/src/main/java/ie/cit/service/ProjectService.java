@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,38 +19,36 @@ public class ProjectService {
 
 	@Autowired
 	private ProjectRepository projectRepository;
-	
+
 	public Project findById(long id){
 		return projectRepository.findById(id);
 	}
-	
+
 	public List<Project> findByName(String fullName){
 		return projectRepository.findByName(fullName);
 	}
-	
+
 	public Iterable<Project> findAll(){
 		return projectRepository.findAll();
 	}
-	
+
 	public Project save(Project proj){
-		
-		
-		
+
 		return projectRepository.save(proj);
 	}
-	
+
 	public void delete(Project proj){
 		projectRepository.delete(proj);
 	}
-	
+
 	public void delete(Long id){
 		projectRepository.delete(id);
 	}
-	
+
 	public List<Project> findByStatus (long status){
 		return projectRepository.findByStatus(status);
 	}
-	
+
 	public List<Project> getLast3Projects(){
 		List<Project> projects = projectRepository.findAll();
 		Collections.sort(projects);
@@ -62,4 +62,11 @@ public class ProjectService {
 		return last3;
 	}
 	
+	public List<Project> getStatusSortedByCreationDate(long status){
+		return projectRepository.findByStatusOrderByCreationDate(status);
+	}
+
+	public List<Project> getStatusSortedByGoalPercent(long status){
+		return projectRepository.findByStatusOrderByGoalPercent(status);
+	}
 }

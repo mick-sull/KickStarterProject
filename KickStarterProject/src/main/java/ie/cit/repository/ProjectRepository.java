@@ -2,6 +2,7 @@ package ie.cit.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -26,8 +27,12 @@ public interface ProjectRepository extends CrudRepository<Project, Long> {  //Jp
 	//@Query(value="Select * FROM projects WHERE id = :id", nativeQuery = true)
 	//public Project findByIdNative(@Param("id") int id);
 	
-
+	public List<Project> findByStatusOrderByCreationDate(long status);
 	
+	@Query(value="SELECT * FROM projects WHERE status = :status", nativeQuery = true )// ORDER BY DATEDIFF(deadLine, creationDate);", nativeQuery = true )
+	public List<Project> findByStatusOrderByGoalPercent(@Param("status") long status);
+	
+	//public List<Project> findByStatus(long value, Pageable pageable);
 	
 	// update method  (Save a Project Object)
 	
