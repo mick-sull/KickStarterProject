@@ -7,10 +7,6 @@ INSERT INTO users VALUES (NULL, 500.0, 'password', 'smithy12'),(NULL, 500.0, 'pa
 
 INSERT INTO user_roles VALUES (NULL,'admin', 1), (NULL,'user', 2), (NULL,'user', 3), (NULL,'user', 4), (NULL,'user', 5), (NULL,'user', 6), (NULL,'user', 7), (NULL,'user', 8), (NULL,'user', 9);
 
-INSERT INTO projects VALUES (NULL, timestamp'2016-09-09 09:30:25 GMT', '2016-12-15','Description 1', 1200.00, '../images/money_tree.jpg', 'Money Tree', 0, 1);
-INSERT INTO projects VALUES (NULL, timestamp'2016-10-10 09:30:25 GMT', '2016-12-25','Description 2', 1249.00, '../images/cats_eyes.png', 'Cat Contact Lenses',1, 2);
-INSERT INTO projects VALUES (NULL, timestamp'2016-11-11 09:30:25 GMT', '2016-12-31','Description 3', 3000.00, '../images/tea_bags.jpg', 'Washable Teabags',1, 3);
-INSERT INTO projects VALUES (NULL, timestamp'2016-12-1 09:30:25 GMT', '2017-02-1','Description 4', 6000.00, '../images/toliet_tissue.jpg', 'Re-usable Toilet Paper', 1, 4);
 
 INSERT INTO projects VALUES (NULL, timestamp'2016-09-09 09:30:25 GMT', '2016-12-15','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pharetra sit amet diam ut venenatis. Duis ullamcorper lectus ut neque maximus, tristique cursus arcu ullamcorper. Vivamus condimentum nisi a mauris pellentesque fringilla. Nunc in lectus id nunc finibus fringilla. Donec a aliquam eros. In aliquam augue vel viverra viverra. Cras ullamcorper turpis enim, nec malesuada est luctus non. Vivamus a augue mi.', 1200.00, '../images/money_tree.jpg', 'Money Tree', 1, 1);
 INSERT INTO projects VALUES (NULL, timestamp'2016-10-10 09:30:25 GMT', '2016-12-25','Quisque blandit elementum mi, faucibus vehicula magna aliquet ut. Vivamus ac dui auctor, tincidunt sem et, pellentesque risus. Donec cursus est sit amet est interdum hendrerit. Nunc gravida tincidunt purus eu facilisis. Aenean varius id odio et maximus. Proin suscipit magna id nunc porttitor, ac pharetra erat ornare. Nulla pretium felis tincidunt, condimentum mi vitae, congue mi. Donec tempus placerat orci in viverra. Quisque eget velit pretium, pellentesque enim in, sollicitudin ipsum. Quisque iaculis, lorem rhoncus rutrum ultrices, dui eros luctus sapien, eu rutrum justo mauris quis mauris. Duis nec massa ullamcorper, semper turpis non, placerat magna. Nulla consectetur leo libero, sit amet tempus libero vulputate non.', 1249.00, '../images/cats_eyes.png', 'Cat Contact Lenses',1, 2);
@@ -25,10 +21,10 @@ INSERT INTO projects VALUES (NULL, timestamp'2016-12-02 09:30:25 GMT', '2017-02-
 
 
 
-INSERT INTO pledges VALUES (NULL, 15.0, timestamp'2016-10-29 09:30:25 GMT', 2, 4), (NULL, 120.0, timestamp'2016-11-09 09:30:25 GMT', 1, 2), (NULL, 75.0, timestamp'2016-10-30 09:30:25 GMT', 4, 2);
-INSERT INTO pledges VALUES (NULL, 25.0, timestamp'2016-12-01 07:30:25 GMT', 2, 3), (NULL, 20.0, timestamp'2016-12-01 09:30:25 GMT', 1, 3), (NULL, 50.0, timestamp'2016-12-02 09:30:25 GMT', 4, 3);
+INSERT INTO pledges VALUES (NULL, 15.0, timestamp'2016-10-29 09:30:25 GMT', 1, 2, 4), (NULL, 120.0, timestamp'2016-11-09 09:30:25 GMT', 1, 1, 2), (NULL, 75.0, timestamp'2016-10-30 09:30:25 GMT', 1, 4, 2);
+INSERT INTO pledges VALUES (NULL, 25.0, timestamp'2016-12-01 07:30:25 GMT', 1, 2, 3), (NULL, 20.0, timestamp'2016-12-01 09:30:25 GMT', 1, 1, 3), (NULL, 50.0, timestamp'2016-12-02 09:30:25 GMT', 1, 4, 3);
 
-INSERT INTO pledges VALUES (NULL, 20.0, timestamp'2016-12-03 06:30:25 GMT', 5, 5);
-INSERT INTO pledges VALUES (NULL, 50.0, timestamp'2016-12-03 07:30:25 GMT', 6, 6);
-INSERT INTO pledges VALUES (NULL, 40.0, timestamp'2016-12-03 08:30:25 GMT', 6, 7);
-INSERT INTO pledges VALUES (NULL, 70.0, timestamp'2016-12-03 09:30:25 GMT', 7, 6);
+INSERT INTO pledges VALUES (NULL, 20.0, timestamp'2016-12-03 06:30:25 GMT', 1, 5, 5);
+INSERT INTO pledges VALUES (NULL, 50.0, timestamp'2016-12-03 07:30:25 GMT', 1, 6, 6);
+INSERT INTO pledges VALUES (NULL, 40.0, timestamp'2016-12-03 08:30:25 GMT', 1, 6, 7);
+INSERT INTO pledges VALUES (NULL, 70.0, timestamp'2016-12-03 09:30:25 GMT', 1, 7, 6);
