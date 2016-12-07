@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Project</title>
+	<link href="/../../../css/main.css" th:href="@{/../../../css/main.css}" rel="stylesheet" type="text/css" media="screen" />
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
+</head>
+<body>
+	<div th:include="fragments/header :: header"></div>
+	<div id="main">
+		<div class="innerMain input_form">
+			<h2 th:text="${proj.name}">Project Name</h2>
+			<form class="newform" action="#" th:action="@{/project/editProj/__${projId}__}"
+				th:object="${proj}" method="post" enctype="multipart/form-data">
+				<br />
+				<table >
+					<tr>
+						<td>Description:</td>
+						<td><textarea th:field="*{description}" rows="5" cols="50"/></td>
+						<td th:if="${#fields.hasErrors('description')}"
+							th:errors="*{description}">Description Error</td>
+					</tr>
+					<tr>
+						<td><button type="submit">Update</button></td>
+					</tr>
+				</table> 
+				<br />
+			</form>
+		</div>
+	</div>
+</body>
+</html>
