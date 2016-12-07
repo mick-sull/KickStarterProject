@@ -71,7 +71,7 @@
 			</div>
 			
 			<div th:if="${project.status == 0}">
-				<a sec:authorize="isAuthenticated()" class="button right disabled"
+				<a sec:authorize="isAuthenticated()" class="disabledButton"
 				th:href="@{#}">Project Closed</a>
 			</div>
 				

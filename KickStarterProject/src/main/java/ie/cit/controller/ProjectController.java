@@ -35,6 +35,7 @@ import ie.cit.entity.User;
 import ie.cit.repository.ProjectRepository;
 import ie.cit.repository.UserRepository;
 import ie.cit.service.ProjectService;
+import ie.cit.service.UserService;
 
 
 /**
@@ -48,7 +49,7 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 	ProjectService projectService;
 
 	@Autowired
-	UserRepository userRepository;
+	UserService userService;
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
@@ -119,7 +120,7 @@ public class ProjectController extends WebMvcConfigurerAdapter{
 	        }
 			
 			
-			project.setOwner(userRepository.findByUsername(getPrincipal()));
+			project.setOwner(userService.findByUsername(getPrincipal()));
 			project.setImagePath("../images/" + image.getOriginalFilename());
 			project.setStatus(1);
 			System.out.println("Image location:: " + project.getImagePath());

@@ -45,15 +45,8 @@ import ie.cit.service.UserService;
 public class UserController extends WebMvcConfigurerAdapter{ 
 	
 
-
-	@Autowired
-	UserRepository userRepository;
-
 	@Autowired
 	UserService userService;
-	
-	@Autowired
-	PledgeRepository pledgeRepository;
 	
 	@Autowired
 	PledgeService pledgeService;
@@ -165,7 +158,7 @@ public class UserController extends WebMvcConfigurerAdapter{
    
    @RequestMapping(value = "/cancelpledge/{id}", method=RequestMethod.GET)
 	public String cancalPledge(@PathVariable("id") long id) {
-		pledgeRepository.delete(id);
+		pledgeService.delete(id);
 		System.out.println("Pledge Deleted");
 		return "redirect:/user/profile";
 	}

@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import javax.validation.constraints.Min;
 
 @Entity
@@ -22,6 +23,10 @@ public class Pledge {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
+	@Version
+	@Column(name = "VERSION")
+	private Integer version;
 	
 	@Min(5)
 	private double amount;
