@@ -2,11 +2,11 @@
 
 body {
 	background: #d7dfe0;
+	font-family: arial, sans-serif;
 }
 
 p{
-	font-size: 10pt;
-	line-height: 110%;
+	font-size: 0.9em;
 }
 
 #header {
