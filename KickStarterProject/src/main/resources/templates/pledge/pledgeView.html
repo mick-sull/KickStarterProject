@@ -1,39 +1,64 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Pledge</title>
-	<link href="/../../../css/main.css" th:href="@{/../../../css/main.css}" rel="stylesheet" type="text/css" media="screen" />
+<title>Pledge</title>
+<!--/*/ <th:block th:include="fragments/head :: head"></th:block> /*/-->
 </head>
-<body> 
+<body>
+
 	<div th:include="fragments/header :: header"></div>
-	<div class="innerMain">
-		<div class="form">
-					<div th:if="${param.error}">
-					 <a th:href="@{/login}">Please Log In Before Pledging</a>
-				</div>
-				
-				<div th:if="${param.errorCreditLimit}">
-					 <a th:href="@{/login}">Please Log In Before Pledging</a>
-				</div>
-				<h1 th:text="${project.name}">Project Title</h1>
-				
+	<div id="main">
+		<div class="innerMain input_form">
+
+			<h1>Make a Pledge</h1>
+			<form class="newform"
+				th:action="@{/project/__${project.getId()}__/pledge/submit}"
+				th:object="${Pledge}" method="POST">
+				<h2 th:text="${project.name}">Project Title</h2>
+
 				<table>
-						<tr>
-						<td><b>Description:</b> <span th:text="${project.description}">Project Description</span></td>
-						</tr>
-						<tr>
-						<h3><td sec:authorize="isAuthenticated()"> <span><b>Credits remaining:</b> </span><span th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(creditRemaining)}">Credit Remaining</span></td></h3>
-						</tr>
+					<tr>
+						<td>Description: <span th:text="${project.description}">Project
+								Description</span></td>
+					</tr>
+					<tr>
+
+						<td>
+							<h3 sec:authorize="isAuthenticated()">
+								<span>Credits remaining: </span><span
+									th:text="${new java.text.DecimalFormat('€#,##0.00;€-#,##0.00').format(creditRemaining)}">Credit
+									Remaining</span>
+							</h3>
+						</td>
+
+					</tr>
+					<tr>
+						<td><input type="text" placeholder="Amount (€) " id="amount"
+							name="amount" autofocus="autofocus" />
+							
+								<b th:if="${param.error}">Please Log In Before Pledging</b>
+								<a class="button" th:if="${param.error}" th:href="@{/login}">Login</a>
+
+							
+								<b th:if="${param.errorCreditLimit}">You cannon pledge beyond your credit limit.</b>
+							</td>
+						<!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->
+					</tr>
+					<tr>
+						<td><button type="submit">Pledge</button> <input
+							type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" /></td>
+					</tr>
 				</table>
 				<form th:action="@{/project/__${project.getId()}__/pledge/submit}"  th:object="${Pledge}" method="POST">
 				  <input type="text"  placeholder="Amount (€) " id="amount" name="amount" autofocus="autofocus" /> <br />
 				   <!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->
-				  <td><button type="submit">Pledge</button></td>
+				  <input type="submit" value="Pledge"/>
 				  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
 			  </div>
 	</div>
 
 
-</body> 
+</body>
 </html>
