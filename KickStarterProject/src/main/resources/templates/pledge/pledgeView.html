@@ -49,12 +49,8 @@
 							type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" /></td>
 					</tr>
-				</table>
-				<form th:action="@{/project/__${project.getId()}__/pledge/submit}"  th:object="${Pledge}" method="POST">
-				  <input type="text"  placeholder="Amount (€) " id="amount" name="amount" autofocus="autofocus" /> <br />
-				   <!-- <input type="password"  placeholder="confirm password" id="cpassword" name="cpassword" /> <br /> -->
-				  <input type="submit" value="Pledge"/>
-				  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					</table>
+
 				</form>
 			  </div>
 	</div>
