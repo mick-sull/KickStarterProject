@@ -18,11 +18,20 @@
 					<li sec:authorize="isAuthenticated()"><a href="/home_logout">Logout</a></li>
 					<li sec:authorize="hasAuthority('admin')"><a href="/admin1/">Admin</a></li>
 				</ul>
+				<div class="searchBar">
+					<form th:action="@{/project/search}" th:object="${project}" method="POST">
+							<input type="text"  placeholder="search projects" id="name" name="name"/> <br />
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					</form>
+
+			</div>
 				
 			</div>
 			<h1>Frameworks Crowd Funding</h1>
+		
+	
+			</div>
 		</div>
-	</div>
 	</header>
 </body>
 </html>

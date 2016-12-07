@@ -49,6 +49,10 @@ public class ProjectService {
 		return projectRepository.findByStatus(status);
 	}
 	
+	public List<Project> findByNameContainsIgnoreCase(String name){
+		return projectRepository.findByNameContainsIgnoreCase(name);
+	}
+	
 	public List<Project> getLast3Projects(){
 		List<Project> projects = projectRepository.findAll();
 		Collections.sort(projects);
