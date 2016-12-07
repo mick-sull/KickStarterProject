@@ -64,4 +64,16 @@ public class PledgeService {
 		return totalPledges;
 		
 	}
+
+
+	public Iterable<Pledge> findFirst5ByOrderByPledgeDateDesc() {
+		
+		return pledgeRepository.findFirst5ByOrderByPledgeDateDesc();
+	}
+
+
+	public void delete(long id) {
+		pledgeRepository.delete(id);
+		
+	}
 }

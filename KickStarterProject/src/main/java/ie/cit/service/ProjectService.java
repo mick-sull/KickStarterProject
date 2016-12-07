@@ -54,16 +54,7 @@ public class ProjectService {
 	}
 	
 	public List<Project> getLast3Projects(){
-		List<Project> projects = projectRepository.findAll();
-		Collections.sort(projects);
-		if(projects.size()<3){
-			return projects;
-		}
-		List<Project> last3 = new ArrayList<Project>();
-		for(int i=0;i<3;i++){
-			last3.add(projects.get(i));		
-		}
-		return last3;
+		return projectRepository.findFirst3ByOrderByCreationDateDesc();
 	}
 	
 }

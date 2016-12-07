@@ -159,8 +159,8 @@ public class Project implements Comparable<Project>{
 		this.pledges = pledges;
 	}
 
-	public double getPledged(){
-		double pledged = 0;
+	public float getPledged(){
+		float pledged = 0;
 		for(Pledge pledge: pledges){
 			pledged+=pledge.getAmount();
 		}
