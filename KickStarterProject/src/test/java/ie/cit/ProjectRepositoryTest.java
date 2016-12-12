@@ -54,7 +54,7 @@ public class ProjectRepositoryTest {
 	
 	@Test
 	@Transactional
-	public void save(){
+	public void saveTest(){
 		
 		//Project proj = projectRepository.save(testProj);
 		Project proj = projectRepository.findById(1);
@@ -65,12 +65,44 @@ public class ProjectRepositoryTest {
 	
 	@Test
 	@Transactional
-	public void delete(){
+	public void deleteTest(){
 		projectRepository.delete(new Long(2));
 		List<Project> projects = projectRepository.findAll();
-		assertEquals(3, projects.size());
+		assertEquals(7, projects.size());
 		Project proj = projectRepository.findById(2);
 		assertNull(proj);
+	}
+	
+	public void findByStatusOrderByCreationDateTest(long status){
+		List<Project> projects = projectRepository.findByStatusOrderByCreationDate(0);
+		assertNotNull(projects);
+	}
+	
+	public void findByNameContainsIgnoreCaseTest(){
+		List<Project> projects = projectRepository.findByNameContainsIgnoreCase("smithy12");
+		assertNotNull(projects);
+		List<Project> projects2 = projectRepository.findByNameContainsIgnoreCase("smITHY12");
+		assertNotNull(projects2);
+	}
+	
+	public void findFirst3ByOrderByCreationDateDescTest(){
+		List<Project> projects = projectRepository.findFirst3ByOrderByCreationDateDesc();
+		assertNotNull(projects);
+		assertEquals(projects.size(), 3);
+	}
+	public void findAllByOrderByCreationDateTest(){
+		List<Project> projects = projectRepository.findAll();
+		assertNotNull(projects);
+	}
+
+	public void findAllTest(){
+		List<Project> projects = projectRepository.findAll();
+		assertNotNull(projects);
+	}
+	
+	public void findByStatusTest(){
+		List<Project> projects = projectRepository.findByStatus(0);
+		assertNotNull(projects);
 	}
 	
 }

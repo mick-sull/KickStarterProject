@@ -63,4 +63,9 @@ public class UserRepositoryTest {
 		assertNull(user);
 	}
     
+	public void findAllTest(){
+		List<User> users = userRepository.findAll();
+		assertNotNull(users);
+	}
+	
 }
